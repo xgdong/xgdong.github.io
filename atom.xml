@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Xianggui Dong</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://xgdong.github.io/"/>
+  <updated>2019-09-19T06:57:19.222Z</updated>
+  <id>https://xgdong.github.io/</id>
+  
+  <author>
+    <name>XGD</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Genome Wide Association Analysis using GEMMA</title>
+    <link href="https://xgdong.github.io/2019/09/19/Genome-Association-Analysis-using-GEMMA/"/>
+    <id>https://xgdong.github.io/2019/09/19/Genome-Association-Analysis-using-GEMMA/</id>
+    <published>2019-09-19T06:38:16.000Z</published>
+    <updated>2019-09-19T06:57:19.222Z</updated>
+    
+    <content type="html"><![CDATA[<p>Genome-wide association study (GWAS) refers to study in which a genome-wide set of genetic variants (usually refers to <a href="https://en.wikipedia.org/wiki/Single-nucleotide_polymorphisms" target="_blank" rel="noopener">single nucleotide polymorphisms</a>, SNP) are genotyped and tested for association with  a certain phenotype. In the past decade, numerous genetic loci have been identified to be associated with many complex traits (diseases) via GWAS both in humans (See National Human Genome Research Institute (NHGRI) Catalog of Published Genome-Wide Association Studies) and animals.  </p><a id="more"></a><p>GWAS exploit linkage disequilibrium, which are population level associations between markers and causative mutations .  </p><p><img src="https://media.springernature.com/w300/springer-static/image/art%3A10.1038%2Fnrg1916/MediaObjects/41576_2006_Article_BFnrg1916_Figb_HTML.jpg?as=webp" alt="Types of population association study">  </p><p>Accounting for population structure is more challenging when family structure or cryptic relatedness is present, and these limitations have motivated the development of new methods.<br><a href="https://github.com/genetics-statistics/GEMMA" target="_blank" rel="noopener">GEMMA</a> is the software implementing the Genome-wide Efficient Mixed Model Association algorithm  for a standard linear mixed model and some of its close relatives for genome-wide association studies (GWAS). It fits a univariate linear mixed model (LMM) for marker association tests with a single phenotype to account for population stratification and sample structure.<br>In the text, I used a set of published genomic data (<a href="https://www.ncbi.nlm.nih.gov/pubmed/23825544" target="_blank" rel="noopener">Zhang et al.</a>) to conduct a simple GWAS.  </p><ul><li><p>Quality control via Plink</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plink --tfile sheep_new --chr-set 30 --allow-extra-chr --make-bed --out  sheep</span><br><span class="line">plink --bfile sheep --allow-extra-chr --chr-set 30 --geno 0.1 --hwe 0.0000001 --maf 0.05  --mind 0.1 --make-bed --out sheep_qc</span><br></pre></td></tr></table></figure></li><li><p>Population structure analysis via <a href="https://xgdong.github.io/2019/09/16/Principal-component-analysis/#more">PCA</a> </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plink --bfile sheep_auto.prune --chr-set 30 --allow-extra-chr --pca</span><br></pre></td></tr></table></figure></li></ul><ul><li><p>Association analysis</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gemma -bfile sheep_auto -gk 1 -o sheep</span><br><span class="line">gemma -bfile sheep_qc -k output/sheep.cXX.txt -lmm 4 -n 1 -o sheep_gemma</span><br></pre></td></tr></table></figure></li><li><p>Data Visualization in R package CMplot<br><a href="https://github.com/YinLiLin/R-CMplot" target="_blank" rel="noopener">CMplot</a> is an excellent  drawing tool designed for Manhattan plot of genomic analysis.  </p></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#Manhattan plot and QQ plot</span><br><span class="line">library(&quot;CMplot&quot;)</span><br><span class="line">gem&lt;-read.table(&quot;sheep_gemma.assoc.txt&quot;,header=T)</span><br><span class="line">gem.sub&lt;-data.frame(gem[,c(&quot;rs&quot;,&quot;chr&quot;,&quot;ps&quot;,&quot;p_wald&quot;)])</span><br><span class="line">CMplot(gem.sub,plot.type=&quot;q&quot;,cex=0.6,signal.cex=0.6,signal.col=&quot;red&quot;,conf.int.col=&quot;grey&quot;,box=FALSE,threshold=1.247287e-06,</span><br><span class="line">       file=&quot;jpg&quot;,memo=&quot;&quot;,dpi=300,file.output=TRUE,verbose=TRUE)</span><br><span class="line">CMplot(gem.sub,plot.type=&quot;b&quot;,col = cols,cex=0.6,</span><br><span class="line">       threshold=1.247287e-06,chr.den.col=NULL,LOG10=TRUE,</span><br><span class="line">       file=&quot;jpg&quot;,memo=&quot;&quot;,dpi=300,file.output=TRUE,verbose=TRUE)</span><br></pre></td></tr></table></figure><ul><li>Result</li></ul><p><img src="https://github.com/xgdong/pipelines-on-genome-analysis/blob/master/GWAS/gwas.png?raw=true" alt="ManhattanAndQQ"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Genome-wide association study (GWAS) refers to study in which a genome-wide set of genetic variants (usually refers to &lt;a href=&quot;https://en.wikipedia.org/wiki/Single-nucleotide_polymorphisms&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;single nucleotide polymorphisms&lt;/a&gt;, SNP) are genotyped and tested for association with  a certain phenotype. In the past decade, numerous genetic loci have been identified to be associated with many complex traits (diseases) via GWAS both in humans (See National Human Genome Research Institute (NHGRI) Catalog of Published Genome-Wide Association Studies) and animals.  &lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="GWAS" scheme="https://xgdong.github.io/categories/GWAS/"/>
+    
+    
+      <category term="Genome" scheme="https://xgdong.github.io/tags/Genome/"/>
+    
+      <category term="Gwas" scheme="https://xgdong.github.io/tags/Gwas/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阳光总是走得很慢</title>
+    <link href="https://xgdong.github.io/2019/09/17/%E9%98%B3%E5%85%89%E6%80%BB%E6%98%AF%E8%B5%B0%E5%BE%97%E5%BE%88%E6%85%A2/"/>
+    <id>https://xgdong.github.io/2019/09/17/阳光总是走得很慢/</id>
+    <published>2019-09-17T05:36:06.000Z</published>
+    <updated>2019-09-19T06:03:21.055Z</updated>
+    
+    <content type="html"><![CDATA[<p>文/伊   甸 </p><p>在平原上，阳光总是走得很慢<br>我常常赶在它前面，想抢到一些好东西<br>我抢到过暴雨、雷霆和浓浓的夜色<br>抢到过失恋、疾病和无数的枯枝败叶  </p><a id="more"></a><p>在平原上，你一定要走在阳光后面<br>慢慢移动脚步，就像小时候母亲拉着你的手<br>——这是整个世界在拉着你的手<br>你一步一个脚印，从未想过要抢在母亲前面</p><p>在平原上，阳光的灵魂开阔而温暖<br>我们狭窄而冷漠的灵魂，不要急于飞翔<br>掏出来慢慢晾晒吧，晒久了<br>它会一点一点融化，像阳光那样金黄而透明</p><p>在平原上，阳光总是以舒缓的旋律<br>慢悠悠地歌唱。一句好歌词不妨从早唱到晚<br>从春唱到冬，从天空唱到大地<br>一支好曲子不妨唱上一生</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;文/伊   甸 &lt;/p&gt;
+&lt;p&gt;在平原上，阳光总是走得很慢&lt;br&gt;我常常赶在它前面，想抢到一些好东西&lt;br&gt;我抢到过暴雨、雷霆和浓浓的夜色&lt;br&gt;抢到过失恋、疾病和无数的枯枝败叶  &lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="中文" scheme="https://xgdong.github.io/categories/%E4%B8%AD%E6%96%87/"/>
+    
+    
+      <category term="poetry" scheme="https://xgdong.github.io/tags/poetry/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Principal component analysis</title>
+    <link href="https://xgdong.github.io/2019/09/16/Principal-component-analysis/"/>
+    <id>https://xgdong.github.io/2019/09/16/Principal-component-analysis/</id>
+    <published>2019-09-16T14:03:23.000Z</published>
+    <updated>2019-09-19T06:39:43.343Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>Principal component analysis (PCA)</strong> is a statistical procedure that uses an orthogonal transformation to convert a set of observations of possibly correlated variables (entities each of which takes on various numerical values) into a set of values of linearly uncorrelated variables called principal components.   </p><a id="more"></a><p>Principal components analysis is a powerful approach for correcting for stratification in genome-wide association studies. This document provides the pipeline of three methods for principal component analysis using genomic data. </p><ul><li><p><strong>Pipeline</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#qc</span><br><span class="line">plink --tfile &lt;file&gt; --allow-extra-chr --chr-set 33 --geno 0.1 --hwe 0.0000001 --maf 0.01  --mind 0.1 --make-bed --out &lt;file&gt;_qc</span><br><span class="line"></span><br><span class="line">plink --bfile &lt;file&gt;_qc --chr-set 33 --allow-extra-chr --indep-pairwise 100 25 0.25</span><br><span class="line">plink --bfile &lt;file&gt;_qc --chr-set 33 --allow-extra-chr --extract plink.prune.in --make-bed --out &lt;file&gt;_qc.prune</span><br><span class="line"></span><br><span class="line">##gcta PCA</span><br><span class="line">gcta64 --bfile &lt;file&gt;_qc.prune --autosome --autosome-num 33 --make-grm --out &lt;file&gt;_qc</span><br><span class="line">gcta64 --grm &lt;file&gt;_qc --pca 20 --out &lt;file&gt;_qc</span><br><span class="line"></span><br><span class="line">##Plink MDS</span><br><span class="line">plink --bfile &lt;file&gt;_qc.prune --chr-set 38 --allow-extra-chr --genome</span><br><span class="line">plink --bfile &lt;file&gt;_qc --chr-set 38 --allow-extra-chr --read-genome plink.genome --cluster --mds-plot 10 </span><br><span class="line"></span><br><span class="line">##smartPCA</span><br><span class="line">smartpca -i &lt;file&gt;.ped -a &lt;file&gt;.pedsnp -b &lt;file&gt;.pedind -o &lt;file&gt;.pca -k 10 -p &lt;file&gt;.plot -e &lt;file&gt;.eval -l &lt;file&gt;.log</span><br></pre></td></tr></table></figure></li><li><p><strong>Visualization in R</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(pca[,1],pca[,2],xlab = &quot;eigenvector1&quot;,ylab = &quot;eigenvector2&quot;)</span><br></pre></td></tr></table></figure></li></ul><p>Here is an example:<br><img src="https://miro.medium.com/max/1200/1*oSOHZMoS-ZfmuAWiF8jY8Q.png" alt="An example"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;Principal component analysis (PCA)&lt;/strong&gt; is a statistical procedure that uses an orthogonal transformation to convert a set of observations of possibly correlated variables (entities each of which takes on various numerical values) into a set of values of linearly uncorrelated variables called principal components.   &lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="GWAS" scheme="https://xgdong.github.io/categories/GWAS/"/>
+    
+    
+      <category term="Genome" scheme="https://xgdong.github.io/tags/Genome/"/>
+    
+      <category term="Statistics" scheme="https://xgdong.github.io/tags/Statistics/"/>
+    
+  </entry>
+  
+</feed>
