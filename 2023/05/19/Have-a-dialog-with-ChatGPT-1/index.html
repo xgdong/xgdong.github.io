@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ChatGPT," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Can ChatGPT replace the scientific researchers in the area of bioinformatics in the future? The current days I conduct a project about population history in farm animals, I asked ChatGPT a few questio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Have a dialog with ChatGPT (1)">
+<meta property="og:url" content="http://example.com/2023/05/19/Have-a-dialog-with-ChatGPT-1/index.html">
+<meta property="og:site_name" content="Xianggui Dong">
+<meta property="og:description" content="Can ChatGPT replace the scientific researchers in the area of bioinformatics in the future? The current days I conduct a project about population history in farm animals, I asked ChatGPT a few questio">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-19T14:37:37.000Z">
+<meta property="article:modified_time" content="2023-06-19T15:06:13.280Z">
+<meta property="article:author" content="DONG XG">
+<meta property="article:tag" content="ChatGPT">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2023/05/19/Have-a-dialog-with-ChatGPT-1/"/>
+
+
+
+
+
+  <title>Have a dialog with ChatGPT (1) | Xianggui Dong</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xianggui Dong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-中文">
+          <a href="/%E4%B8%AD%E6%96%87/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book-reader"></i> <br />
+            
+            中文
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/19/Have-a-dialog-with-ChatGPT-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xianggui Dong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Have a dialog with ChatGPT (1)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-05-19T22:37:37+08:00">
+                2023-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Population-genomics/" itemprop="url" rel="index">
+                    <span itemprop="name">Population genomics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Can ChatGPT replace the scientific researchers in the area of bioinformatics in the future? The current days I conduct a project about population history in farm animals, I asked ChatGPT a few questions , it shocked me a lot. Here is our dialog.</p>
+<span id="more"></span>
+
+<ul>
+<li><p><strong>Q1: How to calculate divergent time of two populations using genomic data?</strong></p>
+</li>
+<li><p>Calculating the divergent time between two populations using genomic data typically involves estimating the time since their last common ancestor. There are several methods available to perform this analysis, including coalescent-based approaches and admixture-based approaches. Here, I’ll provide a high-level overview of a commonly used method called the “pairwise sequentially Markovian coalescent” (PSMC).</p>
+<p>The PSMC method is based on the idea that the genomic data of a population contains information about its historical population size changes. By comparing the patterns of genetic variation between populations, one can infer their divergence history.</p>
+<p>To calculate the divergent time using PSMC, you would follow these steps:</p>
+<ol>
+<li>Data Preparation: Obtain whole-genome sequence data from individuals belonging to each population. This data should ideally include a representative sample of individuals from each population.</li>
+<li>Variant Calling: Identify genetic variants (e.g., single nucleotide polymorphisms or SNPs) from the sequence data of each individual. This step involves aligning the reads to a reference genome and calling variants using specialized software tools.</li>
+<li>Filtering: Apply quality filters to the identified variants to remove low-quality or unreliable calls. Common filtering criteria include read depth, genotype quality, and allele frequency thresholds.</li>
+<li>Data Format Conversion: Convert the filtered variant data into the input format required by the PSMC software. This step typically involves converting the data into a sequential format that represents the number of pairwise differences between individuals along the genome.</li>
+<li>PSMC Analysis: Run the PSMC analysis separately for each population. The PSMC software uses a hidden Markov model to estimate the demographic history of the population based on the patterns of genetic variation. It infers the effective population size over time and the timing of population size changes.</li>
+<li>Comparison and Interpretation: Compare the demographic histories inferred for each population and identify the point at which their effective population sizes started to diverge. This divergence time represents an estimate of the time since their last common ancestor.</li>
+</ol>
+<p>It’s important to note that estimating divergent times using genomic data is a complex process, and the accuracy of the estimate depends on various assumptions made during the analysis. Additionally, the choice of software and specific parameters can influence the results. Therefore, it’s often recommended to consult with experts in population genetics or bioinformatics to ensure the proper application of these methods.</p>
+</li>
+<li><p><strong>Q2: give an example code of running PSMC</strong></p>
+</li>
+<li><p>Sure! Here’s an example of a command-line code to run PSMC on a Unix-based system:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># Assuming you have PSMC software and your data ready, follow these steps:</span><br><span class="line"></span><br><span class="line"># Step 1: Convert variant data to PSMC format</span><br><span class="line">./utils/fq2psmcfa -q20 input.bam &gt; input.psmcfa</span><br><span class="line"></span><br><span class="line"># Step 2: Estimate population-specific mutation rate</span><br><span class="line">./utils/psmcfa2singlefs.py input.psmcfa &gt; input.singlefs</span><br><span class="line"></span><br><span class="line"># Step 3: Run PSMC on each population</span><br><span class="line">./psmc -N25 -t15 -r5 -p &quot;4+25*2+4+6&quot; -o output.psmc input.singlefs</span><br><span class="line"></span><br><span class="line"># Step 4: Plot the results</span><br><span class="line">./utils/psmc_plot.pl -u 4.3e-08 -g 4 -p output.png output.psmc</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>Explanation of the steps:</p>
+<ol>
+<li>Convert variant data to PSMC format: In this step, you convert your variant data (in this example, assumed to be in BAM format) to PSMC input format using the <code>fq2psmcfa</code> utility provided with PSMC. Adjust the quality threshold (<code>-q</code>) as needed.</li>
+<li>Estimate population-specific mutation rate: Use the <code>psmcfa2singlefs.py</code> script to estimate the population-specific mutation rate based on the PSMC input file generated in the previous step.</li>
+<li>Run PSMC on each population: Run the PSMC program (<code>psmc</code>) on the single-locus frequency spectrum file (<code>input.singlefs</code>). Adjust the parameters (<code>-N</code>, <code>-t</code>, <code>-r</code>, and <code>-p</code>) based on your data and the specific analysis requirements. These parameters control the number of iterations, the number of time intervals, and the number of recombinations, among other things.</li>
+<li>Plot the results: Use the <code>psmc_plot.pl</code> script to generate a graphical representation of the PSMC output. Adjust the mutation rate (<code>-u</code>) and generation time (<code>-g</code>) based on your data and the species being analyzed. Specify the output file name (<code>-p</code>) and the PSMC output file (<code>output.psmc</code>).</li>
+</ol>
+<p>Remember, this is just a simplified example, and the exact command-line arguments and file formats may vary depending on the specific version and setup of the PSMC software you are using. Be sure to refer to the PSMC documentation and adjust the parameters accordingly for your analysis.</p>
+<ul>
+<li><p><strong>Q3: Can you using an alternative software ( for example smc++) do the same work?</strong></p>
+</li>
+<li><p>Certainly! If you prefer to use the SMC++ software for inferring population history, here’s an example of how you can run SMC++ on a Unix-based system:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># Assuming you have SMC++ software and your data ready, follow these steps:</span><br><span class="line"></span><br><span class="line"># Step 1: Prepare the input files</span><br><span class="line"># Convert variant data (VCF format) to SMC++ format</span><br><span class="line">smc++ vcf2smc input.vcf.gz input.smc.gz</span><br><span class="line"></span><br><span class="line"># Step 2: Estimate the mutation rate</span><br><span class="line">smc++ estimate --timepoints 20 --knots 3 -o input.est input.smc.gz</span><br><span class="line"></span><br><span class="line"># Step 3: Estimate population history</span><br><span class="line">smc++ cv --cores 4 -o output input.est</span><br><span class="line"></span><br><span class="line"># Step 4: Plot the results</span><br><span class="line">smc++ plot output.pdf output</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>Explanation of the steps:</p>
+<ol>
+<li>Prepare the input files: Use the <code>vcf2smc</code> command to convert your variant data in VCF format (<code>input.vcf.gz</code>) to SMC++ format (<code>input.smc.gz</code>).</li>
+<li>Estimate the mutation rate: Use the <code>estimate</code> command to estimate the mutation rate from the SMC++ input file (<code>input.smc.gz</code>). Adjust the number of timepoints (<code>--timepoints</code>) and the number of knots (<code>--knots</code>) based on your data. The estimated mutation rate will be saved in the output file (<code>input.est</code>).</li>
+<li>Estimate population history: Use the <code>cv</code> command to estimate the population history using cross-validation. Adjust the number of cores (<code>--cores</code>) based on the computational resources available. The output files will be prefixed with the specified output name (<code>output</code> in this example).</li>
+<li>Plot the results: Use the <code>plot</code> command to generate a PDF plot (<code>output.pdf</code>) of the estimated population history based on the SMC++ output files (<code>output</code> prefix). You can customize the plot settings as needed.</li>
+</ol>
+<p>Please note that this is a simplified example, and the actual command-line arguments and file formats may vary depending on the version and configuration of the SMC++ software. It’s recommended to consult the SMC++ documentation and adjust the parameters according to your specific analysis requirements.</p>
+<ul>
+<li><p><strong>Q4:compare the difference of PSMC and SMC++</strong></p>
+</li>
+<li><p>PSMC (Pairwise Sequentially Markovian Coalescent) and SMC++ (Sequentially Markovian Coalescent ++) are both software tools used to infer demographic history and population dynamics from genomic data. While they share similarities in their underlying principles, there are some key differences between PSMC and SMC++:</p>
+<ol>
+<li><p>Methodology:</p>
+<ul>
+<li>PSMC: PSMC is based on a pairwise coalescent model and utilizes a hidden Markov model (HMM) to infer the effective population size over time. It estimates the population size changes and divergence times based on the distribution of pairwise genetic differences.</li>
+<li>SMC++: SMC++ is an extension of the Sequentially Markovian Coalescent (SMC) method. It uses a particle filter approach to jointly estimate the effective population size and mutation rate, allowing for more accurate inference of complex demographic histories. SMC++ incorporates information from multiple genomes and takes advantage of improved statistical techniques.</li>
+</ul>
+</li>
+<li><p>Input Data:</p>
+<ul>
+<li>PSMC: PSMC primarily requires haploid genome sequences or genotype data in the form of pairwise differences along the genome.</li>
+<li>SMC++: SMC++ can handle both haploid and diploid data, including whole-genome sequencing data in VCF (Variant Call Format) or similar formats. It can also utilize information from multiple individuals within a population.</li>
+</ul>
+</li>
+<li><p>Inference Flexibility:</p>
+<ul>
+<li>PSMC: PSMC provides a single estimate of population size over time and divergence times. It assumes a fixed mutation rate and generation time and does not explicitly estimate these parameters.</li>
+<li>SMC++: SMC++ allows for joint estimation of the effective population size, mutation rate, and generation time. It provides confidence intervals for inferred parameters and allows for more flexible modeling of complex demographic scenarios.</li>
+</ul>
+</li>
+<li><p>Computational Requirements:</p>
+<ul>
+<li>PSMC: PSMC is computationally efficient and can handle relatively large datasets. It is typically faster compared to SMC++.</li>
+<li>SMC++: SMC++ is more computationally intensive due to its particle filtering approach, especially when analyzing large datasets with many individuals. It requires more computational resources and time compared to PSMC.</li>
+</ul>
+</li>
+<li><p>Software Availability:</p>
+<ul>
+<li>PSMC: PSMC is a widely used software tool and has been available for a longer time. It has a well-established user community and several supporting resources.</li>
+<li>SMC++: SMC++ is a relatively newer tool and may have a smaller user base compared to PSMC. However, it offers additional features and improved accuracy for inferring demographic histories.</li>
+</ul>
+</li>
+</ol>
+<p>It’s worth noting that both PSMC and SMC++ have their strengths and limitations, and the choice between them depends on the specific requirements of your analysis, the available data, and the complexity of the population history you wish to infer. Consulting the documentation and publications associated with each tool can provide further insights into their capabilities and suitability for your research goals.</p>
+</li>
+<li><p><strong>Q5: how to use split command in smc++</strong></p>
+<p>The <code>split</code> command in SMC++ is used to split the genomic data into multiple chunks, which can be processed independently to speed up the analysis. This can be particularly useful when working with large datasets. Here’s an example of how to use the <code>split</code> command in SMC++:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># Assuming you have SMC++ software and your data ready, follow these steps:</span><br><span class="line"></span><br><span class="line"># Step 1: Prepare the input files</span><br><span class="line"># Convert variant data (VCF format) to SMC++ format</span><br><span class="line">smc++ vcf2smc input.vcf.gz input.smc.gz</span><br><span class="line"></span><br><span class="line"># Step 2: Split the data</span><br><span class="line">smc++ split -c 10 -o input_chunk input.smc.gz</span><br><span class="line"></span><br><span class="line"># Step 3: Process each chunk</span><br><span class="line">for i in &#123;0..9&#125;; do</span><br><span class="line">    smc++ estimate --timepoints 20 --knots 3 -o input_chunk$&#123;i&#125;.est input_chunk$&#123;i&#125;.smc.gz</span><br><span class="line">    smc++ cv -o output_chunk$&#123;i&#125; input_chunk$&#123;i&#125;.est</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"># Step 4: Merge the results</span><br><span class="line">smc++ merge -o output input_chunk*.cv</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>Explanation of the steps:</p>
+<ol>
+<li>Prepare the input files: Use the <code>vcf2smc</code> command to convert your variant data in VCF format (<code>input.vcf.gz</code>) to SMC++ format (<code>input.smc.gz</code>).</li>
+<li>Split the data: Use the <code>split</code> command to split the SMC++ input file (<code>input.smc.gz</code>) into multiple chunks. Specify the number of chunks (<code>-c</code>) you want to split the data into, and the output prefix (<code>-o</code>) for the chunk files.</li>
+<li>Process each chunk: Use a loop to process each chunk separately. In this example, we iterate through the chunks numbered from 0 to 9 (<code>&#123;0..9&#125;</code>), but you can adjust this range based on the number of chunks generated in the previous step. For each chunk, run the <code>estimate</code> command to estimate the mutation rate and the <code>cv</code> command to estimate the population history using cross-validation. Adjust the parameters (<code>--timepoints</code>, <code>--knots</code>, and others) based on your data and analysis requirements. The output files will be prefixed with the corresponding chunk number.</li>
+<li>Merge the results: Use the <code>merge</code> command to merge the results from all the processed chunks into a single output file. Specify the output name (<code>-o</code>) for the merged results. This step combines the estimated population histories from all the chunks into a unified result.</li>
+</ol>
+<p>Remember to adjust the command-line arguments, file names, and paths based on your specific data and requirements. The split and merge steps allow you to parallelize the analysis, which can significantly speed up the processing time for large datasets.</p>
+<p>Regenerate response</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ChatGPT/" rel="tag"># ChatGPT</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/19/Genome-Wide-Association-Analysis-based-on-mixed-linear-model/" rel="next" title="Genome Wide Association Analysis based on mixed linear model">
+                <i class="fa fa-chevron-left"></i> Genome Wide Association Analysis based on mixed linear model
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/photo.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xgdong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xgdong@cau.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://scholar.google.com/citations?hl=en&user=bXH765MAAAAJ" target="_blank" title="Google Scholar">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google Scholar</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DONG XG</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
