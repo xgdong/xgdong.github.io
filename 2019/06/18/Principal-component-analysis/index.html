@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Statisitcs," />
 
 
 
@@ -79,14 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://example.com/tags/index.html">
+<meta name="description" content="Principal component analysis (PCA) is a statistical procedure that uses an orthogonal transformation to convert a set of observations of possibly correlated variables (entities each of which takes on">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Principal component analysis">
+<meta property="og:url" content="http://example.com/2019/06/18/Principal-component-analysis/index.html">
 <meta property="og:site_name" content="Xianggui Dong">
+<meta property="og:description" content="Principal component analysis (PCA) is a statistical procedure that uses an orthogonal transformation to convert a set of observations of possibly correlated variables (entities each of which takes on">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-06-19T12:10:53.000Z">
-<meta property="article:modified_time" content="2023-06-19T12:13:17.964Z">
+<meta property="article:published_time" content="2019-06-18T03:14:47.000Z">
+<meta property="article:modified_time" content="2023-06-20T03:20:07.557Z">
 <meta property="article:author" content="DONG XG">
+<meta property="article:tag" content="Statisitcs">
 <meta name="twitter:card" content="summary">
 
 
@@ -117,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/tags/"/>
+  <link rel="canonical" href="http://example.com/2019/06/18/Principal-component-analysis/"/>
 
 
 
 
 
-  <title>tags | Xianggui Dong</title>
+  <title>Principal component analysis | Xianggui Dong</title>
   
 
 
@@ -258,40 +261,175 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/18/Principal-component-analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xianggui Dong">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                3 tags in total
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/ChatGPT/" style="font-size: 30px; color: #111">ChatGPT</a> <a href="/tags/Genomics/" style="font-size: 12px; color: #ccc">Genomics</a> <a href="/tags/Statisitcs/" style="font-size: 12px; color: #ccc">Statisitcs</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Principal component analysis</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-18T11:14:47+08:00">
+                2019-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GWAS/" itemprop="url" rel="index">
+                    <span itemprop="name">GWAS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p><strong>Principal component analysis (PCA)</strong> is a statistical procedure that uses an orthogonal transformation to convert a set of observations of possibly correlated variables (entities each of which takes on various numerical values) into a set of values of linearly uncorrelated variables called principal components.   </p>
+<span id="more"></span>
+<p>Principal components analysis is a powerful approach for correcting for stratification in genome-wide association studies. This document provides the pipeline of three methods for principal component analysis using genomic data. </p>
+<ul>
+<li><p><strong>Pipeline</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#qc</span><br><span class="line">plink --tfile &lt;file&gt; --allow-extra-chr --chr-set 33 --geno 0.1 --hwe 0.0000001 --maf 0.01  --mind 0.1 --make-bed --out &lt;file&gt;_qc</span><br><span class="line"></span><br><span class="line">plink --bfile &lt;file&gt;_qc --chr-set 33 --allow-extra-chr --indep-pairwise 100 25 0.25</span><br><span class="line">plink --bfile &lt;file&gt;_qc --chr-set 33 --allow-extra-chr --extract plink.prune.in --make-bed --out &lt;file&gt;_qc.prune</span><br><span class="line"></span><br><span class="line">##gcta PCA</span><br><span class="line">gcta64 --bfile &lt;file&gt;_qc.prune --autosome --autosome-num 33 --make-grm --out &lt;file&gt;_qc</span><br><span class="line">gcta64 --grm &lt;file&gt;_qc --pca 20 --out &lt;file&gt;_qc</span><br><span class="line"></span><br><span class="line">##Plink MDS</span><br><span class="line">plink --bfile &lt;file&gt;_qc.prune --chr-set 38 --allow-extra-chr --genome</span><br><span class="line">plink --bfile &lt;file&gt;_qc --chr-set 38 --allow-extra-chr --read-genome plink.genome --cluster --mds-plot 10 </span><br><span class="line"></span><br><span class="line">##smartPCA</span><br><span class="line">smartpca -i &lt;file&gt;.ped -a &lt;file&gt;.pedsnp -b &lt;file&gt;.pedind -o &lt;file&gt;.pca -k 10 -p &lt;file&gt;.plot -e &lt;file&gt;.eval -l &lt;file&gt;.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Visualization in R</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(pca[,1],pca[,2],xlab = &quot;eigenvector1&quot;,ylab = &quot;eigenvector2&quot;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Statisitcs/" rel="tag"># Statisitcs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/19/Genome-Wide-Association-Analysis-based-on-mixed-linear-model/" rel="prev" title="Genome Wide Association Analysis based on linear mixed model">
+                Genome Wide Association Analysis based on linear mixed model <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
