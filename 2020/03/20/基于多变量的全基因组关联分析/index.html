@@ -87,7 +87,7 @@
 <meta property="og:description" content="如果数量性状的表型值随着时间发生变化，这样的性状被称作纵向性状(longitudinal traits)(Yang et al., 2006)。如奶牛的泌乳性状，蛋鸡的产蛋量性状。纵向性状的遗传分析通常有三种策略(Yang et al., 2006)：">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-20T07:43:09.000Z">
-<meta property="article:modified_time" content="2023-06-20T07:44:11.793Z">
+<meta property="article:modified_time" content="2023-06-20T07:53:41.085Z">
 <meta property="article:author" content="DONG XG">
 <meta property="article:tag" content="Genomics">
 <meta name="twitter:card" content="summary">
@@ -364,11 +364,10 @@
       
         <p>如果数量性状的表型值随着时间发生变化，这样的性状被称作<strong>纵向性状(longitudinal traits)</strong>(Yang et al., 2006)。如奶牛的泌乳性状，蛋鸡的产蛋量性状。纵向性状的遗传分析通常有三种策略(Yang et al., 2006)： </p>
 <span id="more"></span>
-<ul>
-<li>1）将不同时间点的表型值当作同一表型的不同重复； </li>
-<li>2）将不同时间点测得的表型作为不同的性状，采用多变量联合分析策略； </li>
-<li>3）拟合表型随时间变化的生长曲线，在多变量分析理论下分析拟合参数。<br>对于常见数量性状遗传变异的解析一般使用单变量的全基因组关联分析（GWAS），而对于纵向性状，需要用单变量的全基因组关联分析。基于多变量的 GWAS 同样基于混合线性模型的统计方法， 依变量为多个表型构成的矩阵，其模型如下：<br>𝐘 &#x3D; 𝐖𝐀 + 𝐱𝛃^𝑻 + 𝐔 + 𝐄<br>其中 Y 为 n×d 表型矩阵， n 为样本数， d 为表型数目， W 为 n×c 协变量矩阵（固定效应矩阵）， A 为协变量矩阵相对应的 c×d 系数矩阵， x 为 SNP 基因型的 n 维向量， β 为 d 个性状的 SNP 的效应大小矩阵， 𝐔表示 n×d 随机效应矩阵， 𝐄表示 n×d随机残差。 在模型中， G ∼ MNn×d(0; K; Vg)， E ∼ MNn×d(0; In×n; Ve)， K 为 n×n 亲缘关系矩阵。 假设检验以 β&#x3D;0 为零假设进行 Wald 检验， 其中 0 为 d 维 0 向量。</li>
-</ul>
+<p> 1）将不同时间点的表型值当作同一表型的不同重复；<br> 2）将不同时间点测得的表型作为不同的性状，采用多变量联合分析策略；<br> 3）拟合表型随时间变化的生长曲线，在多变量分析理论下分析拟合参数。<br>对于常见数量性状遗传变异的解析一般使用单变量的全基因组关联分析（GWAS），而对于纵向性状，需要用单变量的全基因组关联分析。基于多变量的 GWAS 同样基于混合线性模型的统计方法， 依变量为多个表型构成的矩阵，其模型如下：</p>
+<center>𝐘 = 𝐖𝐀 + 𝐱𝛃^𝑻 + 𝐔 + 𝐄</center>
+
+<p>其中 Y 为 n×d 表型矩阵， n 为样本数， d 为表型数目， W 为 n×c 协变量矩阵（固定效应矩阵）， A 为协变量矩阵相对应的 c×d 系数矩阵， x 为 SNP 基因型的 n 维向量， β 为 d 个性状的 SNP 的效应大小矩阵， 𝐔表示 n×d 随机效应矩阵， 𝐄表示 n×d随机残差。 在模型中， G ∼ MNn×d(0; K; Vg)， E ∼ MNn×d(0; In×n; Ve)， K 为 n×n 亲缘关系矩阵。 假设检验以 β&#x3D;0 为零假设进行 Wald 检验， 其中 0 为 d 维 0 向量。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/genetics-statistics/GEMMA">GEMMA</a>软件提供了多变量GWAS的计算方法。详细信息可参考<a target="_blank" rel="noopener" href="https://www.xzlab.org/software/GEMMAmanual.pdf">GEMMA document</a>, 一般流程如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">＃.fam 文件的表头,P1 P2 P3 P4 P5 P6分别代表6个不同性状</span><br><span class="line">＃　FID	IID	PID	MID	SEX	P1 P2 P3 P4 P5 P6</span><br><span class="line">#多性状GWAS，例如同时分析P1 P2 P3三个性状，输入文件为plink的bed/bim/fam文件</span><br><span class="line">##计算kinship</span><br><span class="line">gemma -bfile file -gk 1 -o file</span><br><span class="line">## GWAS过程</span><br><span class="line">gemma -bfile file -k output/file.cXX.txt -lmm １ -n 1 2 3  -o gwas_output</span><br></pre></td></tr></table></figure>
 
