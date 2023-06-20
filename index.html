@@ -999,6 +999,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/05/20/A-pipeline-for-Genome-Assembly-using-SOAPdenovo2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xianggui Dong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/20/A-pipeline-for-Genome-Assembly-using-SOAPdenovo2/" itemprop="url">A pipeline for Genome Assembly using SOAPdenovo2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-20T13:17:57+08:00">
+                2019-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Assembly/" itemprop="url" rel="index">
+                    <span itemprop="name">Assembly</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>A pipeline for Genome Assembly using SOAPdenovo2</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/aquaskyline/SOAPdenovo2">SOAPdenovo2</a> is a novel short-read assembly method that can build a de novo draft assembly for the human-sized genomes.</p>
+<p><strong>Step1: Check the Insertion Size</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">java -jar picard.jar CollectInsertSizeMetrics \</span><br><span class="line">      I=.sorted.markdup.bam \</span><br><span class="line">      O=.insert_size_metrics.txt \</span><br><span class="line">      H=.nsert_size_histogram.pdf \</span><br><span class="line">      M=0.5</span><br><span class="line">      </span><br></pre></td></tr></table></figure>
+
+
+<p><strong>Step2: Make configure file</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">max_rd_len=150  </span><br><span class="line">[LIB]</span><br><span class="line">avg_ins=320</span><br><span class="line">reverse_seq=0</span><br><span class="line">asm_flags=3</span><br><span class="line">rank=1</span><br><span class="line">pair_num_cutoff=3</span><br><span class="line">map_len=32</span><br><span class="line">q1=._1_clean.fq.gz</span><br><span class="line">q2=._2_clean.fq.gz</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Step3: Run SOAPdenovo2</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">time SOAPdenovo-63mer all -s file_configure -K 63 -o output </span><br></pre></td></tr></table></figure>
+
+
+
+<p><em><strong>Set kmers&#x3D;29,55,63</strong></em></p>
+<p><strong>Step4:Evaluate the assembly using QUAST</strong></p>
+<ul>
+<li>QUAST</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># for contig</span><br><span class="line">## without reference</span><br><span class="line"></span><br><span class="line">quast.py -o compare 29mer/file_29mer.contig 55mer/file_55mer.contig 63mer/file_63mer.contig</span><br><span class="line"></span><br><span class="line">## with reference</span><br><span class="line"></span><br><span class="line">quast.py -R reference.fa -o compare 29mer/file_29mer.contig 55mer/file__55mer.contig 63mer/file_63mer.contig</span><br><span class="line">quast.py -R reference.fa -g top_level.gff3 -o compare_r_g 29mer/file_29mer.contig 55mer/file_55mer.contig 63mer/file_63mer.contig</span><br><span class="line"></span><br><span class="line"># for scaf</span><br><span class="line"></span><br><span class="line">quast.py -o compare 29mer/file_29mer.scafSeq 55mer/file_55mer.scafSeq 63mer/file_63mer.scafSeq</span><br><span class="line">quast.py -s -o compare_scafSeq 29mer/file_29mer.scafSeq 55mer/file_55mer.scafSeq 63mer/file_63mer.scafSeq</span><br><span class="line">quast.py -R reference.fa -o compare_scaf_ref 29mer/file_29mer.scafSeq 55mer/file_55mer.scafSeq 63mer/file_63mer.scafSeq</span><br></pre></td></tr></table></figure>
+
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2019/02/20/%E5%90%BE%E5%AE%B6%E6%9C%89%E5%A5%B3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1182,7 +1345,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1193,7 +1356,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
