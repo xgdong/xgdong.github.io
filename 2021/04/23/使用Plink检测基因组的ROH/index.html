@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Genomics,Genetic Diversity," />
+  <meta name="keywords" content="Genomics,Statistics," />
 
 
 
@@ -79,22 +79,19 @@
 
 
 
-<meta name="description" content="Run of homozygosity (ROH) refers to contiguous regions of the genome where an individual is homozygous across all sites. This arises if the haplotypes transmitted from the mother and father are identi">
+<meta name="description" content="ROH定义亲本的最近祖先相同时，如果将相同的染色体片段(IBD)传递给子代后，个体的基因组会形成连续区域的纯合，这些连续的纯合位点被称为长纯合片段(run of homozygosity, ROH)。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Run of homozygosity">
-<meta property="og:url" content="http://example.com/2020/04/22/Run-of-homozygosity/index.html">
+<meta property="og:title" content="使用Plink检测基因组的ROH">
+<meta property="og:url" content="http://example.com/2021/04/23/%E4%BD%BF%E7%94%A8Plink%E6%A3%80%E6%B5%8B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84ROH/index.html">
 <meta property="og:site_name" content="Xianggui Dong">
-<meta property="og:description" content="Run of homozygosity (ROH) refers to contiguous regions of the genome where an individual is homozygous across all sites. This arises if the haplotypes transmitted from the mother and father are identi">
+<meta property="og:description" content="ROH定义亲本的最近祖先相同时，如果将相同的染色体片段(IBD)传递给子代后，个体的基因组会形成连续区域的纯合，这些连续的纯合位点被称为长纯合片段(run of homozygosity, ROH)。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnrg.2017.109/MediaObjects/41576_2018_Article_BFnrg2017109_Fig1_HTML.jpg?as=webp">
-<meta property="og:image" content="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnrg.2017.109/MediaObjects/41576_2018_Article_BFnrg2017109_Fig4_HTML.jpg?as=webp">
-<meta property="article:published_time" content="2020-04-22T11:42:57.000Z">
-<meta property="article:modified_time" content="2023-06-22T11:47:59.540Z">
+<meta property="article:published_time" content="2021-04-23T12:42:32.000Z">
+<meta property="article:modified_time" content="2023-06-22T12:44:42.610Z">
 <meta property="article:author" content="DONG XG">
 <meta property="article:tag" content="Genomics">
-<meta property="article:tag" content="Genetic Diversity">
+<meta property="article:tag" content="Statistics">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnrg.2017.109/MediaObjects/41576_2018_Article_BFnrg2017109_Fig1_HTML.jpg?as=webp">
 
 
 
@@ -124,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2020/04/22/Run-of-homozygosity/"/>
+  <link rel="canonical" href="http://example.com/2021/04/23/使用Plink检测基因组的ROH/"/>
 
 
 
 
 
-  <title>Run of homozygosity | Xianggui Dong</title>
+  <title>使用Plink检测基因组的ROH | Xianggui Dong</title>
   
 
 
@@ -277,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/04/22/Run-of-homozygosity/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/23/%E4%BD%BF%E7%94%A8Plink%E6%A3%80%E6%B5%8B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84ROH/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -294,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Run of homozygosity</h1>
+          <h1 class="post-title" itemprop="name headline">使用Plink检测基因组的ROH</h1>
         
 
         <div class="post-meta">
@@ -306,8 +303,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-22T19:42:57+08:00">
-                2020-04-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-23T20:42:32+08:00">
+                2021-04-23
               </time>
             
 
@@ -329,8 +326,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Populations-Genetics/" itemprop="url" rel="index">
-                    <span itemprop="name">Populations Genetics</span>
+                  <a href="/categories/Population-Genetics/" itemprop="url" rel="index">
+                    <span itemprop="name">Population Genetics</span>
                   </a>
                 </span>
 
@@ -366,22 +363,54 @@
       
 
       
-        <p><strong>Run of homozygosity (ROH)</strong> refers to contiguous regions of the genome where an individual is homozygous across all sites. This arises if the haplotypes transmitted from the mother and father are identical, having in turn been inherited from a common ancestor at some point in the past.The number and length of ROH reflect individual demographic history, while the homozygosity burden can be used to investigate the genetic architecture of complex disease. <a target="_blank" rel="noopener" href="https://www.nature.com/articles/nrg.2017.109#Sec1">CEBALLOS F.C. et al</a>. reviewed how ROH affects population history and trait architecture in Nature Review Genetics.</p>
+        <h2 id="ROH定义"><a href="#ROH定义" class="headerlink" title="ROH定义"></a>ROH定义</h2><p>亲本的最近祖先相同时，如果将相同的染色体片段(IBD)传递给子代后，个体的基因组会形成连续区域的纯合，这些连续的纯合位点被称为<a target="_blank" rel="noopener" href="https://xgdong.github.io/2020/04/22/Run-of-homozygosity/">长纯合片段(run of homozygosity, ROH)</a>。</p>
 <span id="more"></span>
-
-<h2 id="Origins-of-ROH-and-inbreeding-depression"><a href="#Origins-of-ROH-and-inbreeding-depression" class="headerlink" title="Origins of ROH and inbreeding depression"></a>Origins of ROH and inbreeding depression</h2><p>ROH arise when two copies of an ancestral haplotype are brought together in an individual: longer haplotypes inherited from recent common ancestors or shorter haplotypes from distant ones (background relatedness). Short ROH characterized by strong linkage disequilibrium (LD) among markers are not always considered autozygous but nevertheless are due to the mating of distantly related individuals.&amp;#x20;</p>
-<p>Different population histories give rise to divergent distributions of long and short ROH. The ROH complement of outbred populations is related to their effective population size, with smaller populations tending to have more ROH and larger populations fewer ROH. Admixed populations, on account of their more distant shared ancestry across two or more ancestral populations, have fewer ROH than their respective parental populations. Consanguineous communities, on the other hand, have much longer ROH than those seen in outbred populations owing to very recent pedigree inbreeding loops, whereas populations that have undergone a population bottleneck carry a greater number of shorter ROH than cosmopolitan populations, reflecting deeper parental relatedness. Finally, populations with both reduced effective population size in the past and recent inbreeding have the greatest burden of ROH.</p>
-<p><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnrg.2017.109/MediaObjects/41576_2018_Article_BFnrg2017109_Fig1_HTML.jpg?as=webp" alt="Fig.1 Demographic origins of ROH"></p>
-<center>Fig.1 Demographic origins of ROH</center>
-
-<p>The causal mechanism for inbreeding depression is only partly understood, but empirical evidence in a number of species suggests that it is due mostly to increased homozygosity for (partially) recessive detrimental mutations maintained at low frequency in populations by mutation–selection balance, although the contribution of some loci with heterozygote advantage (overdominance) maintained at intermediate frequencies by balancing selection cannot be disregarded. When dominant alleles at some loci decrease the trait value while others increase it, we do not expect any association with genome-wide homozygosity. However, if on average across all causal loci dominance is biased in one direction, for instance, to decrease the trait, we will see such an association. Such directional dominance arises owing to directional selection in evolutionary fitness-related traits.&amp;#x20;</p>
-<p>Empirical studies show that ROH are more enriched for homozygous deleterious variants than for non-deleterious variants. This emphasizes that ROH are important reservoirs of homozygous deleterious variation, although this is expected given the typically lower allele frequencies of deleterious variants compared with non-deleterious variants. Inbreeding increases the probability that a variant will be found in a homozygous state, so ROH are enriched for homozygotes at all allele frequencies. This enrichment is particularly strong for rare variants because a variant at frequency p is homozygous at frequency p2 outside ROH and at frequency p inside ROH (where p is the population frequency of the allele). Homozygotes thus occur (1&#x2F;p) times more frequently inside ROH, so lower-frequency variants (including deleterious variants) are more strongly enriched. Theory also predicts that very strong inbreeding will in fact purge deleterious recessive alleles from the population as more copies are found in a homozygous state, and this has been observed in mountain and eastern lowland gorillas but not in human genome data.</p>
-<h2 id="Distribution-of-ROH"><a href="#Distribution-of-ROH" class="headerlink" title="Distribution of ROH"></a>Distribution of ROH</h2><p><em><strong>Correlation with pedigree inbreeding.</strong></em> The degree of individual inbreeding is measured using the inbreeding coefficient (F), the probability that an individual receives two alleles that are identical-by-descent at a given locus, which is also the expected proportion of the genome that is autozygous, for example, F &#x3D; 0.0625 for the offspring of first cousins. The genomic inbreeding coefficient, F<sub>ROH</sub>, measures the actual proportion of the autosomal genome that is autozygous — defined as the sum total length of ROH (S<sub>ROH</sub>) over a specified minimum length threshold as a proportion of the total genome length. Another useful measure of ROH is the total number of ROH (N<sub>ROH</sub>). F<sub>ROH</sub> captures the total inbreeding coefficient of the individual, irrespective of pedigree accuracy or depth (or absence), within the resolution of the data set available (and hence the size of ROH that can be called).</p>
-<p>***Distribution across the genome.***ROH are somewhat more common in regions of high LD and low recombination29 and are particularly prevalent on the X chromosome58 and regions of low genetic diversity. These observations are linked by low recombination: the X chromosome spends one-third of its time in the male germline, where (with the exception of the small pseudo-autosomal regions) it cannot recombine, and low-recombination regions have low SNP diversity. Recombination breaks up chromosomal segments over generations, and thus low-recombination regions allow greater persistence of long ancestral haplotypes and an increased chance that they come together to form ROH. Over and above this, there is a very uneven distribution along the genome, with a number of comparatively short regions with significant excesses of ROH — known as <strong>ROH islands</strong> — on each chromosome, as well as coldspots. These ROH islands dominate the population of ROH in typical outbred individuals, and while they are present in all populations, they are overshadowed by much longer ROH arising from recent pedigree loops in inbred individuals.</p>
-<h2 id="ROH-and-complex-diseas"><a href="#ROH-and-complex-diseas" class="headerlink" title="ROH and complex diseas"></a>ROH and complex diseas</h2><p><em><strong>Quantitative traits.</strong></em> More consistency has been observed in studies of the association between SROH and quantitative traits, perhaps owing to the larger sample sizes, the use of common microarrays within study populations and the avoidance of unmatched controls. An exceptionally large study of up to 354,224 subjects found the regression coefficient between trait and the proportion of the genome in ROH to be −2.9 (0.2), −3.5 (0.7), −4.7 (0.6) and −4.6 (0.7) phenotypic standard deviations (standard errors in brackets) for height, forced expiratory lung volume in 1 second, cognitive ability and educational attainment, respectively.<br><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnrg.2017.109/MediaObjects/41576_2018_Article_BFnrg2017109_Fig4_HTML.jpg?as=webp" alt="Fig.2"></p>
-<center>Fig.2 Effect of genome-wide homozygosity on 16 complex traitsH</center>
-
-<p><em><strong>Individual ROH associations.</strong></em> The postulated model that homozygosity at rare, deleterious recessive alleles gives rise to directional dominance implies that there are specific loci within the genome giving rise to these effects. In principle, such loci should be discernible through a GWAS, although recessive models have been much less used than additive ones (and there is less power to detect rare variants than common ones). A slightly different approach identifies regions in which the occurrence of ROH is tested for association with the trait, aiming to detect a different class of variant from that found in GWAS. However, caution must be used in such exercises: multiple testing of large numbers of independent regions requires proper adjustment, and confounding by genome-wide homozygosity needs to be accounted for.</p>
+<h2 id="ROH在群体遗传学中的应用"><a href="#ROH在群体遗传学中的应用" class="headerlink" title="ROH在群体遗传学中的应用"></a>ROH在群体遗传学中的应用</h2><p>ROH 是来源于相同祖先的两个单倍型的组合，长的单倍型来源较近的共同组先，而短的单倍型来源较远的祖先。 ROH 可以反映种群历史(demographic history)，解析遗传结构。当出现近交、瓶颈效应、基因流、群体扩张或者缩减时，个体ROH的数目和长度都会发生变化。</p>
+<h2 id="ROH检测方法"><a href="#ROH检测方法" class="headerlink" title="ROH检测方法"></a>ROH检测方法</h2><p>目前使用最多的ROH检测软件为<a href="">Plink</a>。</p>
+<p>plink采用滑窗的方法，对基因组每条染色体的SNP进行扫描，以寻找连续的纯合SNP。 plink首先计算包含某个SNP的完全纯合滑窗的比例，如果该比例超过设定好的阈值，那么这个SNP就被认为是在一段ROH中。在每个滑窗中可以指定一定数量的缺失或是杂合的SNP，以包含基因定型错误，失败或是稀有变异等情况。最后，如果在某个片段中连续纯合SNP的数量超过一个数量或距离阈值（SNP数量或是染色体的距离），那么就可以判定这个片段是ROH。</p>
+<p>ROH不仅在人上，在<a target="_blank" rel="noopener" href="https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-6463-x">家养动物</a>上也有很广泛的应用。</p>
+<h3 id="基本用法和参数"><a href="#基本用法和参数" class="headerlink" title="基本用法和参数"></a><strong>基本用法和参数</strong></h3><pre><code>plink --bfile mydata --homozyg
+    --homozyg [&#123;group | group-verbose&#125;] [&#39;consensus-match&#39;] [&#39;extend&#39;] [&#39;subtract-1-from-lengths&#39;]
+    --homozyg-snp &lt;min SNP count&gt;
+    --homozyg-kb &lt;min length&gt;
+    --homozyg-density &lt;max inverse density (kb/SNP)&gt;
+    --homozyg-gap &lt;max internal gap kb length&gt;
+    --homozyg-het &lt;max hets&gt;
+    --homozyg-window-snp &lt;scanning window size&gt;
+    --homozyg-window-het &lt;max hets in scanning window hit&gt;
+    --homozyg-window-missing &lt;max missing calls in scanning window hit&gt;
+    --homozyg-window-threshold &lt;min scanning window hit rate&gt;
+</code></pre>
+<h3 id="结果文件解读"><a href="#结果文件解读" class="headerlink" title="结果文件解读"></a>结果文件解读</h3><ul>
+<li><p>使用–homozyg基本参数计算完成后会得到 .hom文件和.hom.indiv文件，hom文件每一行包含如下信息：</p>
+<blockquote>
+<pre><code>     FID      Family ID
+     IID      Individual ID
+     CHR      Chromosome
+     SNP1     SNP at start of region
+     SNP2     SNP at end of region
+     POS1     Physical position (bp) of SNP1
+     POS2     Physical position (bp) of SNP2
+     KB       Length of region (kb)
+     NSNP     Number of SNPs in run
+     DENSITY  Average SNP density (1 SNP per kb)
+     PHOM     Proportion of sites homozygous
+     PHET     Proportion of sites heterozygous
+</code></pre>
+</blockquote>
+</li>
+<li><p>hom.indiv文件每一行包含如下信息：</p>
+<blockquote>
+<pre><code>     FID      Family ID
+     IID      Individual ID
+     PHE      Phenotype
+     NSEG     Number of ROH
+     KB       Total Length of ROH
+     KBAVG    Average Length of ROH
+</code></pre>
+</blockquote>
+</li>
+</ul>
 
       
     </div>
@@ -401,7 +430,7 @@
           
             <a href="/tags/Genomics/" rel="tag"># Genomics</a>
           
-            <a href="/tags/Genetic-Diversity/" rel="tag"># Genetic Diversity</a>
+            <a href="/tags/Statistics/" rel="tag"># Statistics</a>
           
         </div>
       
@@ -414,8 +443,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/20/%E5%9F%BA%E4%BA%8E%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%85%A8%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%85%B3%E8%81%94%E5%88%86%E6%9E%90/" rel="next" title="基于多变量的全基因组关联分析">
-                <i class="fa fa-chevron-left"></i> 基于多变量的全基因组关联分析
+              <a href="/2021/04/22/Run-of-homozygosity/" rel="next" title="Run of homozygosity">
+                <i class="fa fa-chevron-left"></i> Run of homozygosity
               </a>
             
           </div>
@@ -507,7 +536,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -518,7 +547,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -584,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Origins-of-ROH-and-inbreeding-depression"><span class="nav-number">1.</span> <span class="nav-text">Origins of ROH and inbreeding depression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Distribution-of-ROH"><span class="nav-number">2.</span> <span class="nav-text">Distribution of ROH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ROH-and-complex-diseas"><span class="nav-number">3.</span> <span class="nav-text">ROH and complex diseas</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ROH%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">ROH定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ROH%E5%9C%A8%E7%BE%A4%E4%BD%93%E9%81%97%E4%BC%A0%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">ROH在群体遗传学中的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ROH%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">ROH检测方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%E5%92%8C%E5%8F%82%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">基本用法和参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E6%96%87%E4%BB%B6%E8%A7%A3%E8%AF%BB"><span class="nav-number">3.2.</span> <span class="nav-text">结果文件解读</span></a></li></ol></li></ol></div>
             
 
           </div>
