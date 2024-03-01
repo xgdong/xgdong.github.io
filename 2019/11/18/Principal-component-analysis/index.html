@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Genomics," />
+  <meta name="keywords" content="Statistics," />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="SOAPdenovo2 is a novel short-read assembly method that can build a de novo draft assembly for the human-sized genomes.">
+<meta name="description" content="Principal component analysis (PCA) is a statistical procedure that uses an orthogonal transformation to convert a set of observations of possibly correlated variables (entities each of which takes on">
 <meta property="og:type" content="article">
-<meta property="og:title" content="A pipeline for Genome Assembly using SOAPdenovo2">
-<meta property="og:url" content="http://example.com/2019/05/20/A-pipeline-for-Genome-Assembly-using-SOAPdenovo2/index.html">
+<meta property="og:title" content="Principal component analysis">
+<meta property="og:url" content="http://example.com/2019/11/18/Principal-component-analysis/index.html">
 <meta property="og:site_name" content="Xianggui Dong">
-<meta property="og:description" content="SOAPdenovo2 is a novel short-read assembly method that can build a de novo draft assembly for the human-sized genomes.">
+<meta property="og:description" content="Principal component analysis (PCA) is a statistical procedure that uses an orthogonal transformation to convert a set of observations of possibly correlated variables (entities each of which takes on">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-05-20T05:17:57.000Z">
-<meta property="article:modified_time" content="2023-06-20T05:28:43.272Z">
+<meta property="article:published_time" content="2019-11-18T03:14:47.000Z">
+<meta property="article:modified_time" content="2024-03-01T12:30:42.086Z">
 <meta property="article:author" content="DONG XG">
-<meta property="article:tag" content="Genomics">
+<meta property="article:tag" content="Statistics">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2019/05/20/A-pipeline-for-Genome-Assembly-using-SOAPdenovo2/"/>
+  <link rel="canonical" href="http://example.com/2019/11/18/Principal-component-analysis/"/>
 
 
 
 
 
-  <title>A pipeline for Genome Assembly using SOAPdenovo2 | Xianggui Dong</title>
+  <title>Principal component analysis | Xianggui Dong</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/05/20/A-pipeline-for-Genome-Assembly-using-SOAPdenovo2/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/18/Principal-component-analysis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">A pipeline for Genome Assembly using SOAPdenovo2</h1>
+          <h1 class="post-title" itemprop="name headline">Principal component analysis</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-20T13:17:57+08:00">
-                2019-05-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-18T11:14:47+08:00">
+                2019-11-18
               </time>
             
 
@@ -325,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Assembly/" itemprop="url" rel="index">
-                    <span itemprop="name">Assembly</span>
+                  <a href="/categories/GWAS/" itemprop="url" rel="index">
+                    <span itemprop="name">GWAS</span>
                   </a>
                 </span>
 
@@ -362,28 +362,16 @@
       
 
       
-        <p><a target="_blank" rel="noopener" href="https://github.com/aquaskyline/SOAPdenovo2">SOAPdenovo2</a> is a novel short-read assembly method that can build a de novo draft assembly for the human-sized genomes.</p>
+        <p><strong>Principal component analysis (PCA)</strong> is a statistical procedure that uses an orthogonal transformation to convert a set of observations of possibly correlated variables (entities each of which takes on various numerical values) into a set of values of linearly uncorrelated variables called principal components.   </p>
 <span id="more"></span>
-
-
-<p><strong>Step1: Check the Insertion Size</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">java -jar picard.jar CollectInsertSizeMetrics \</span><br><span class="line">      I=.sorted.markdup.bam \</span><br><span class="line">      O=.insert_size_metrics.txt \</span><br><span class="line">      H=.nsert_size_histogram.pdf \</span><br><span class="line">      M=0.5</span><br><span class="line">      </span><br></pre></td></tr></table></figure>
-
-
-<p><strong>Step2: Make configure file</strong> </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">max_rd_len=150  </span><br><span class="line">[LIB]</span><br><span class="line">avg_ins=320</span><br><span class="line">reverse_seq=0</span><br><span class="line">asm_flags=3</span><br><span class="line">rank=1</span><br><span class="line">pair_num_cutoff=3</span><br><span class="line">map_len=32</span><br><span class="line">q1=._1_clean.fq.gz</span><br><span class="line">q2=._2_clean.fq.gz</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>Step3: Run SOAPdenovo2</strong> </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">time SOAPdenovo-63mer all -s file_configure -K 63 -o output </span><br></pre></td></tr></table></figure>
-
-<p><em><strong>Set kmers&#x3D;29,55,63</strong></em></p>
-<p><strong>Step4:Evaluate the assembly using QUAST</strong></p>
+<p>Principal components analysis is a powerful approach for correcting for stratification in genome-wide association studies. This document provides the pipeline of three methods for principal component analysis using genomic data. </p>
 <ul>
-<li>QUAST</li>
+<li><p><strong>Pipeline</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#qc</span><br><span class="line">plink --tfile &lt;file&gt; --allow-extra-chr --chr-set 33 --geno 0.1 --hwe 0.0000001 --maf 0.01  --mind 0.1 --make-bed --out &lt;file&gt;_qc</span><br><span class="line"></span><br><span class="line">plink --bfile &lt;file&gt;_qc --chr-set 33 --allow-extra-chr --indep-pairwise 100 25 0.25</span><br><span class="line">plink --bfile &lt;file&gt;_qc --chr-set 33 --allow-extra-chr --extract plink.prune.in --make-bed --out &lt;file&gt;_qc.prune</span><br><span class="line"></span><br><span class="line">##gcta PCA</span><br><span class="line">gcta64 --bfile &lt;file&gt;_qc.prune --autosome --autosome-num 33 --make-grm --out &lt;file&gt;_qc</span><br><span class="line">gcta64 --grm &lt;file&gt;_qc --pca 20 --out &lt;file&gt;_qc</span><br><span class="line"></span><br><span class="line">##Plink MDS</span><br><span class="line">plink --bfile &lt;file&gt;_qc.prune --chr-set 38 --allow-extra-chr --genome</span><br><span class="line">plink --bfile &lt;file&gt;_qc --chr-set 38 --allow-extra-chr --read-genome plink.genome --cluster --mds-plot 10 </span><br><span class="line"></span><br><span class="line">##smartPCA</span><br><span class="line">smartpca -i &lt;file&gt;.ped -a &lt;file&gt;.pedsnp -b &lt;file&gt;.pedind -o &lt;file&gt;.pca -k 10 -p &lt;file&gt;.plot -e &lt;file&gt;.eval -l &lt;file&gt;.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Visualization in R</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(pca[,1],pca[,2],xlab = &quot;eigenvector1&quot;,ylab = &quot;eigenvector2&quot;)</span><br></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># for contig</span><br><span class="line">## without reference</span><br><span class="line"></span><br><span class="line">quast.py -o compare 29mer/file_29mer.contig 55mer/file_55mer.contig 63mer/file_63mer.contig</span><br><span class="line"></span><br><span class="line">## with reference</span><br><span class="line"></span><br><span class="line">quast.py -R reference.fa -o compare 29mer/file_29mer.contig 55mer/file__55mer.contig 63mer/file_63mer.contig</span><br><span class="line">quast.py -R reference.fa -g top_level.gff3 -o compare_r_g 29mer/file_29mer.contig 55mer/file_55mer.contig 63mer/file_63mer.contig</span><br><span class="line"></span><br><span class="line"># for scaf</span><br><span class="line"></span><br><span class="line">quast.py -o compare 29mer/file_29mer.scafSeq 55mer/file_55mer.scafSeq 63mer/file_63mer.scafSeq</span><br><span class="line">quast.py -s -o compare_scafSeq 29mer/file_29mer.scafSeq 55mer/file_55mer.scafSeq 63mer/file_63mer.scafSeq</span><br><span class="line">quast.py -R reference.fa -o compare_scaf_ref 29mer/file_29mer.scafSeq 55mer/file_55mer.scafSeq 63mer/file_63mer.scafSeq</span><br></pre></td></tr></table></figure>
-
-
 
       
     </div>
@@ -401,7 +389,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Genomics/" rel="tag"># Genomics</a>
+            <a href="/tags/Statistics/" rel="tag"># Statistics</a>
           
         </div>
       
@@ -414,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/14/%E6%B2%B3%E8%A5%BF%E8%B5%B0%E5%BB%8A%E4%B9%8B%E9%80%9A%E9%81%93/" rel="next" title="河西走廊之通道">
-                <i class="fa fa-chevron-left"></i> 河西走廊之通道
+              <a href="/2019/06/29/%E5%86%9C%E5%9C%BA%E7%94%9F%E6%B4%BB/" rel="next" title="农场生活">
+                <i class="fa fa-chevron-left"></i> 农场生活
               </a>
             
           </div>
@@ -424,8 +412,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/18/Principal-component-analysis/" rel="prev" title="Principal component analysis">
-                Principal component analysis <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/19/Genome-Wide-Association-Analysis-based-on-mixed-linear-model/" rel="prev" title="Genome Wide Association Analysis based on linear mixed model">
+                Genome Wide Association Analysis based on linear mixed model <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

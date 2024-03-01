@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="Genome-wide association study (GWAS) refers to study in which a genome-wide set of genetic variants (usually refers to single nucleotide polymorphisms, SNP) are genotyped and tested for association wi">
+<meta name="description" content="SOAPdenovo2 is a novel short-read assembly method that can build a de novo draft assembly for the human-sized genomes.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Genome Wide Association Analysis based on linear mixed model">
-<meta property="og:url" content="http://example.com/2019/06/19/Genome-Wide-Association-Analysis-based-on-mixed-linear-model/index.html">
+<meta property="og:title" content="A pipeline for Genome Assembly using SOAPdenovo2">
+<meta property="og:url" content="http://example.com/2019/12/29/A-pipeline-for-Genome-Assembly-using-SOAPdenovo2/index.html">
 <meta property="og:site_name" content="Xianggui Dong">
-<meta property="og:description" content="Genome-wide association study (GWAS) refers to study in which a genome-wide set of genetic variants (usually refers to single nucleotide polymorphisms, SNP) are genotyped and tested for association wi">
+<meta property="og:description" content="SOAPdenovo2 is a novel short-read assembly method that can build a de novo draft assembly for the human-sized genomes.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/xgdong/pipelines-on-genomic-analysis/blob/master/pic/LD.png?raw=true">
-<meta property="og:image" content="https://github.com/xgdong/pipelines-on-genome-analysis/blob/master/GWAS/gwas.png?raw=true">
-<meta property="article:published_time" content="2019-06-19T12:18:30.000Z">
-<meta property="article:modified_time" content="2023-06-20T00:51:38.678Z">
+<meta property="article:published_time" content="2019-12-29T05:17:57.000Z">
+<meta property="article:modified_time" content="2024-03-01T12:30:57.997Z">
 <meta property="article:author" content="DONG XG">
 <meta property="article:tag" content="Genomics">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/xgdong/pipelines-on-genomic-analysis/blob/master/pic/LD.png?raw=true">
 
 
 
@@ -123,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2019/06/19/Genome-Wide-Association-Analysis-based-on-mixed-linear-model/"/>
+  <link rel="canonical" href="http://example.com/2019/12/29/A-pipeline-for-Genome-Assembly-using-SOAPdenovo2/"/>
 
 
 
 
 
-  <title>Genome Wide Association Analysis based on linear mixed model | Xianggui Dong</title>
+  <title>A pipeline for Genome Assembly using SOAPdenovo2 | Xianggui Dong</title>
   
 
 
@@ -276,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/19/Genome-Wide-Association-Analysis-based-on-mixed-linear-model/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/29/A-pipeline-for-Genome-Assembly-using-SOAPdenovo2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -293,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Genome Wide Association Analysis based on linear mixed model</h1>
+          <h1 class="post-title" itemprop="name headline">A pipeline for Genome Assembly using SOAPdenovo2</h1>
         
 
         <div class="post-meta">
@@ -305,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-19T20:18:30+08:00">
-                2019-06-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-29T13:17:57+08:00">
+                2019-12-29
               </time>
             
 
@@ -328,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/GWAS/" itemprop="url" rel="index">
-                    <span itemprop="name">GWAS</span>
+                  <a href="/categories/Assembly/" itemprop="url" rel="index">
+                    <span itemprop="name">Assembly</span>
                   </a>
                 </span>
 
@@ -365,30 +362,28 @@
       
 
       
-        <p>Genome-wide association study (GWAS) refers to study in which a genome-wide set of genetic variants (usually refers to <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Single-nucleotide_polymorphisms">single nucleotide polymorphisms</a>, SNP) are genotyped and tested for association with  a certain phenotype. In the past decade, numerous genetic loci have been identified to be associated with many complex traits (diseases) via GWAS both in humans (See National Human Genome Research Institute (NHGRI) Catalog of Published Genome-Wide Association Studies) and animals.  </p>
+        <p><a target="_blank" rel="noopener" href="https://github.com/aquaskyline/SOAPdenovo2">SOAPdenovo2</a> is a novel short-read assembly method that can build a de novo draft assembly for the human-sized genomes.</p>
 <span id="more"></span>
 
 
-<p>GWAS exploit linkage disequilibrium, which are population level associations between markers and causative mutations .  </p>
-<p><img src="https://github.com/xgdong/pipelines-on-genomic-analysis/blob/master/pic/LD.png?raw=true" alt="Types of population association study">  </p>
-<p>Accounting for population structure is more challenging when family structure or cryptic relatedness is present, and these limitations have motivated the development of new methods.<br><a target="_blank" rel="noopener" href="https://github.com/genetics-statistics/GEMMA">GEMMA</a> is the software implementing the Genome-wide Efficient Mixed Model Association algorithm  for a standard linear mixed model and some of its close relatives for genome-wide association studies (GWAS). It fits a univariate linear mixed model (LMM) for marker association tests with a single phenotype to account for population stratification and sample structure.<br>In the text, I used a set of published genomic data (<a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/23825544">Zhang et al.</a>) to conduct a simple GWAS.  </p>
+<p><strong>Step1: Check the Insertion Size</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">java -jar picard.jar CollectInsertSizeMetrics \</span><br><span class="line">      I=.sorted.markdup.bam \</span><br><span class="line">      O=.insert_size_metrics.txt \</span><br><span class="line">      H=.nsert_size_histogram.pdf \</span><br><span class="line">      M=0.5</span><br><span class="line">      </span><br></pre></td></tr></table></figure>
+
+
+<p><strong>Step2: Make configure file</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">max_rd_len=150  </span><br><span class="line">[LIB]</span><br><span class="line">avg_ins=320</span><br><span class="line">reverse_seq=0</span><br><span class="line">asm_flags=3</span><br><span class="line">rank=1</span><br><span class="line">pair_num_cutoff=3</span><br><span class="line">map_len=32</span><br><span class="line">q1=._1_clean.fq.gz</span><br><span class="line">q2=._2_clean.fq.gz</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Step3: Run SOAPdenovo2</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">time SOAPdenovo-63mer all -s file_configure -K 63 -o output </span><br></pre></td></tr></table></figure>
+
+<p><em><strong>Set kmers&#x3D;29,55,63</strong></em></p>
+<p><strong>Step4:Evaluate the assembly using QUAST</strong></p>
 <ul>
-<li><p>Quality control via Plink</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plink --tfile sheep_new --chr-set 30 --allow-extra-chr --make-bed --out  sheep</span><br><span class="line">plink --bfile sheep --allow-extra-chr --chr-set 30 --geno 0.1 --hwe 0.0000001 --maf 0.05  --mind 0.1 --make-bed --out sheep_qc</span><br></pre></td></tr></table></figure></li>
-<li><p>Population structure analysis via PCA</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plink --bfile sheep_auto.prune --chr-set 30 --allow-extra-chr --pca</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Association analysis</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gemma -bfile sheep_auto -gk 1 -o sheep</span><br><span class="line">gemma -bfile sheep_qc -k output/sheep.cXX.txt -lmm 4 -n 1 -o sheep_gemma</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Data Visualization in R package CMplot<br><a target="_blank" rel="noopener" href="https://github.com/YinLiLin/R-CMplot">CMplot</a> is an excellent  drawing tool designed for Manhattan plot of genomic analysis.</p>
-</li>
+<li>QUAST</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#Manhattan plot and QQ plot</span><br><span class="line">library(&quot;CMplot&quot;)</span><br><span class="line">gem&lt;-read.table(&quot;sheep_gemma.assoc.txt&quot;,header=T)</span><br><span class="line">gem.sub&lt;-data.frame(gem[,c(&quot;rs&quot;,&quot;chr&quot;,&quot;ps&quot;,&quot;p_wald&quot;)])</span><br><span class="line">CMplot(gem.sub,plot.type=&quot;q&quot;,cex=0.6,signal.cex=0.6,signal.col=&quot;red&quot;,conf.int.col=&quot;grey&quot;,box=FALSE,threshold=1.247287e-06,</span><br><span class="line">       file=&quot;jpg&quot;,memo=&quot;&quot;,dpi=300,file.output=TRUE,verbose=TRUE)</span><br><span class="line">CMplot(gem.sub,plot.type=&quot;b&quot;,col = cols,cex=0.6,</span><br><span class="line">       threshold=1.247287e-06,chr.den.col=NULL,LOG10=TRUE,</span><br><span class="line">       file=&quot;jpg&quot;,memo=&quot;&quot;,dpi=300,file.output=TRUE,verbose=TRUE)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Result</li>
-</ul>
-<p><img src="https://github.com/xgdong/pipelines-on-genome-analysis/blob/master/GWAS/gwas.png?raw=true" alt="ManhattanAndQQ"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># for contig</span><br><span class="line">## without reference</span><br><span class="line"></span><br><span class="line">quast.py -o compare 29mer/file_29mer.contig 55mer/file_55mer.contig 63mer/file_63mer.contig</span><br><span class="line"></span><br><span class="line">## with reference</span><br><span class="line"></span><br><span class="line">quast.py -R reference.fa -o compare 29mer/file_29mer.contig 55mer/file__55mer.contig 63mer/file_63mer.contig</span><br><span class="line">quast.py -R reference.fa -g top_level.gff3 -o compare_r_g 29mer/file_29mer.contig 55mer/file_55mer.contig 63mer/file_63mer.contig</span><br><span class="line"></span><br><span class="line"># for scaf</span><br><span class="line"></span><br><span class="line">quast.py -o compare 29mer/file_29mer.scafSeq 55mer/file_55mer.scafSeq 63mer/file_63mer.scafSeq</span><br><span class="line">quast.py -s -o compare_scafSeq 29mer/file_29mer.scafSeq 55mer/file_55mer.scafSeq 63mer/file_63mer.scafSeq</span><br><span class="line">quast.py -R reference.fa -o compare_scaf_ref 29mer/file_29mer.scafSeq 55mer/file_55mer.scafSeq 63mer/file_63mer.scafSeq</span><br></pre></td></tr></table></figure>
+
+
 
       
     </div>
@@ -419,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/18/Principal-component-analysis/" rel="next" title="Principal component analysis">
-                <i class="fa fa-chevron-left"></i> Principal component analysis
+              <a href="/2019/12/19/Genome-Wide-Association-Analysis-based-on-mixed-linear-model/" rel="next" title="Genome Wide Association Analysis based on linear mixed model">
+                <i class="fa fa-chevron-left"></i> Genome Wide Association Analysis based on linear mixed model
               </a>
             
           </div>
@@ -429,8 +424,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/29/%E5%86%9C%E5%9C%BA%E7%94%9F%E6%B4%BB/" rel="prev" title="农场生活">
-                农场生活 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/02/18/%E7%BE%A4%E4%BD%93%E9%81%97%E4%BC%A0%E5%AD%A6%E4%B8%AD%E7%9A%84%E9%80%89%E6%8B%A9%E6%A8%A1%E5%BC%8F/" rel="prev" title="群体遗传学中的选择模式">
+                群体遗传学中的选择模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
