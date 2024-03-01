@@ -87,7 +87,7 @@
 <meta property="og:description" content="Notes on calling variants in RNA-seq data with GATK  RNA-seq includes reads mapped across splice junctions and is associated with high variability of coverage, so typical variant calling pipelines (fo">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-01T08:59:24.000Z">
-<meta property="article:modified_time" content="2024-03-01T09:47:48.997Z">
+<meta property="article:modified_time" content="2024-03-01T09:50:33.830Z">
 <meta property="article:author" content="DONG XG">
 <meta property="article:tag" content="Transcriptomics">
 <meta name="twitter:card" content="summary">
@@ -391,7 +391,7 @@ java -jar /usr/local/gatk3/GenomeAnalysisTK.jar -T PrintReads -R /path/to/genome
 </code></pre>
 <h4 id="3-Call-and-Filter-Variants"><a href="#3-Call-and-Filter-Variants" class="headerlink" title="3 Call and Filter Variants."></a>3 Call and Filter Variants.</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -jar /usr/local/gatk3/GenomeAnalysisTK.jar -T HaplotypeCaller -R /path/to/genome/fasta -I recalibrated.bam -dontUseSoftClippedBases -stand_call_conf 20.0 -o Variants_called.vcf`</span><br><span class="line"></span><br><span class="line">java -jar /usr/local/gatk3/GenomeAnalysisTK.jar -T VariantFiltration -R /path/to/genome/fasta -V Variants_called.vcf -window 35 -cluster 3 -filterName Filter -filter &quot;QD &lt; 2.0&quot; -filterName Filter -filter &quot;FS &gt; 30.0&quot; -o Filtered_variants_called.vcf`</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><strong>Predict the effects of called variants.</strong></p>
+<p>**Predict the effects of called variants.**\</p>
 <p>Several tools are available to analyze variants found in your .vcf result files for potential functional consequence. See details <a target="_blank" rel="noopener" href="http://barcwiki.wi.mit.edu/wiki/SOPs/vcf">​here</a>.</p>
 <p><a target="_blank" rel="noopener" href="http://barcwiki.wi.mit.edu/wiki/SOP/CallingVariantsRNAseq">This article was reposted from BaRC.</a></p>
 
