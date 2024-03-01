@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Transcriptomics," />
 
 
 
@@ -79,16 +79,17 @@
 
 
 
-<meta name="description" content="在群体遗传学中，假设SNP的两个等位基因为A和a，三种基因型AA，Aa和aa的适合度分别为ωAA,ωAa和ωaa，如果三种基因型的适合度不相等，则表明有选择的发生。">
+<meta name="description" content="Notes on calling variants in RNA-seq data with GATK  RNA-seq includes reads mapped across splice junctions and is associated with high variability of coverage, so typical variant calling pipelines (fo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="群体遗传学中的选择模式">
-<meta property="og:url" content="http://example.com/2020/02/18/%E7%BE%A4%E4%BD%93%E9%81%97%E4%BC%A0%E5%AD%A6%E4%B8%AD%E7%9A%84%E9%80%89%E6%8B%A9%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:title" content="Calling variants in RNA-seq data with GATK">
+<meta property="og:url" content="http://example.com/2020/03/01/Calling-variants-in-RNA-seq-data-with-GATK/index.html">
 <meta property="og:site_name" content="Xianggui Dong">
-<meta property="og:description" content="在群体遗传学中，假设SNP的两个等位基因为A和a，三种基因型AA，Aa和aa的适合度分别为ωAA,ωAa和ωaa，如果三种基因型的适合度不相等，则表明有选择的发生。">
+<meta property="og:description" content="Notes on calling variants in RNA-seq data with GATK  RNA-seq includes reads mapped across splice junctions and is associated with high variability of coverage, so typical variant calling pipelines (fo">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-18T10:15:26.000Z">
-<meta property="article:modified_time" content="2023-06-22T11:47:48.207Z">
+<meta property="article:published_time" content="2020-03-01T08:59:24.000Z">
+<meta property="article:modified_time" content="2024-03-01T12:02:12.540Z">
 <meta property="article:author" content="DONG XG">
+<meta property="article:tag" content="Transcriptomics">
 <meta name="twitter:card" content="summary">
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2020/02/18/群体遗传学中的选择模式/"/>
+  <link rel="canonical" href="http://example.com/2020/03/01/Calling-variants-in-RNA-seq-data-with-GATK/"/>
 
 
 
 
 
-  <title>群体遗传学中的选择模式 | Xianggui Dong</title>
+  <title>Calling variants in RNA-seq data with GATK | Xianggui Dong</title>
   
 
 
@@ -272,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/18/%E7%BE%A4%E4%BD%93%E9%81%97%E4%BC%A0%E5%AD%A6%E4%B8%AD%E7%9A%84%E9%80%89%E6%8B%A9%E6%A8%A1%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/01/Calling-variants-in-RNA-seq-data-with-GATK/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -289,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">群体遗传学中的选择模式</h1>
+          <h1 class="post-title" itemprop="name headline">Calling variants in RNA-seq data with GATK</h1>
         
 
         <div class="post-meta">
@@ -301,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-18T18:15:26+08:00">
-                2020-02-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-01T16:59:24+08:00">
+                2020-03-01
               </time>
             
 
@@ -324,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Population-Genetics/" itemprop="url" rel="index">
-                    <span itemprop="name">Population Genetics</span>
+                  <a href="/categories/Repost/" itemprop="url" rel="index">
+                    <span itemprop="name">Repost</span>
                   </a>
                 </span>
 
@@ -361,16 +362,38 @@
       
 
       
-        <p>在群体遗传学中，假设SNP的两个等位基因为A和a，三种基因型AA，Aa和aa的适合度分别为ω<sub>AA</sub>,ω<sub>Aa</sub>和ω<sub>aa</sub>，如果三种基因型的适合度不相等，则表明有选择的发生。</p>
-<span id="more"></span>
-
-<p>如果 ω<sub>AA</sub> &gt; ω<sub>Aa</sub> &gt; ω<sub>aa</sub> 或者 ω<sub>AA</sub> &lt; ω<sub>Aa</sub> &lt; ω<sub>aa</sub>，则表明存在定向选择(directional selection)，定向选择通过提高或者降低等位基因的频率而倾向于消除群体中的变异。<br>如果群体中杂合子的适合度最高，即 ω<sub>AA</sub> &lt; ω<sub>Aa</sub> &gt; ω<sub>aa</sub>，则表明存在超显性(overdominance)。超显性属于平衡选择(balancing selection)的一种，后者指的是通过选择保持群体的变异性(variability)。<br>在分子进化中，选择的模式有<strong>正向选择(positive selection)</strong> 、<strong>负向选择(negative selection)</strong> 、<strong>净化选择(purifying selection)<strong>和</strong>歧化选择(diversifying selection)</strong> 。</p>
+        <p><strong>Notes on calling variants in RNA-seq data with GATK</strong></p>
 <ul>
-<li>正向选择指的是新变异的出现是有利的而对有利变异进行选择，定向选择和超显性都属于正向选择的一种;</li>
-<li>负向选择指的是新变异的出现是有害的，有害变异被选低或者淘汰的过程，负向选择等同于净化选择;</li>
-<li>歧化选择指的是群体中两个或者多个极端的表型同时被选择的过程，歧化选择也增加群体的变异性。</li>
+<li>RNA-seq includes reads mapped across splice junctions and is associated with high variability of coverage, so typical variant calling pipelines (for DNA) can lead to lots of false positives and negatives.</li>
+<li>GATK is currently the gold standard for calling variants in RNA-seq data. See a detailed description of their workflow here:<span id="more"></span>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://gatkforums.broadinstitute.org/gatk/discussion/3892/the-gatk-best-practices-for-variant-calling-on-rnaseq-in-full-detail">​GATK Best Practices for variant calling on RNAseq</a></li>
+<li><a target="_blank" rel="noopener" href="https://software.broadinstitute.org/gatk/documentation/article.php?id=3891">​Calling variants in RNAseq</a> (with sample commands)</li>
 </ul>
-<p>自然状况下随机变异更倾向于产生不利变异，所以许多新变异的出现更容易遭受负向选择而从基因库中移除。当一个新变异出现但不影响个体的适合度时，即 ω<sub>AA</sub> &#x3D; ω<sub>Aa</sub> &#x3D; ω<sub>aa</sub>，则该位点被认为是中性的，该位点不受选择影响， 统计学中拒绝中性进化模型的检验被称为<strong>中性检验</strong> 。</p>
+</li>
+<li>A main difference between calling variants in RNA vs DNA sequencing reads with GATK, is for RNA-seq data the <a target="_blank" rel="noopener" href="https://github.com/alexdobin/STAR">​STAR</a> aligner is used to perform a 2-pass read mapping step, which was shown (<a target="_blank" rel="noopener" href="https://www.nature.com/nmeth/journal/v10/n12/full/nmeth.2722.html">​Engström, et al.</a>) to have superior SNP sensitivity in a comparison of the most common mapping tools.</li>
+</ul>
+<h3 id="Using-GATK-to-call-variants-from-RNA-seq-reads"><a href="#Using-GATK-to-call-variants-from-RNA-seq-reads" class="headerlink" title="Using GATK to call variants from RNA-seq reads"></a>Using GATK to call variants from RNA-seq reads</h3><p>This example pipeline starts with a single-end short-read fastq file (Reads_1.fq).<br>Note that GATK (versions 3.7 and 3.8) requires Java 1.8 (so you may need to adjust your path to point to that version, if an older version is the default).<br>For example, this can be added to ~&#x2F;.bashrc:<br>export PATH&#x3D;&#x2F;path&#x2F;to&#x2F;java:$PATH</p>
+<h4 id="1-Run-the-STAR-2-pass-procedure-to-map-reads-to-the-reference-genome"><a href="#1-Run-the-STAR-2-pass-procedure-to-map-reads-to-the-reference-genome" class="headerlink" title="1  Run the STAR 2-pass procedure to map reads to the reference genome."></a>1  Run the STAR 2-pass procedure to map reads to the reference genome.</h4><p>For the STAR 2-pass mapping procedure, please see our mapping SOP, under <a target="_blank" rel="noopener" href="http://barcwiki.wi.mit.edu/wiki/SOPs/mapping">​STAR</a>.</p>
+<h4 id="2-Replace-ReadGroups-mark-duplicate-reads-clip-intron-overhangs-and-reassign-mapping-qualities-with-​Picard-Tools-and-​GATK"><a href="#2-Replace-ReadGroups-mark-duplicate-reads-clip-intron-overhangs-and-reassign-mapping-qualities-with-​Picard-Tools-and-​GATK" class="headerlink" title="2 Replace ReadGroups, mark duplicate reads , clip intron overhangs and reassign mapping qualities with ​Picard Tools and ​GATK"></a>2 Replace ReadGroups, mark duplicate reads , clip intron overhangs and reassign mapping qualities with <a target="_blank" rel="noopener" href="http://broadinstitute.github.io/picard/">​Picard Tools</a> and <a target="_blank" rel="noopener" href="https://software.broadinstitute.org/gatk/download/">​GATK</a></h4><p><strong>Replace read groups and order, by coordinates, the reads</strong>.</p>
+<p>Note, if you are combining multiple experiments in this step the RGSM IDs must be the same while the library IDs must be unique.</p>
+<pre><code>java -jar /usr/local/share/picard-tools/picard.jar AddOrReplaceReadGroups I=output.sam O=rg_added_sorted.bam SO=coordinate RGID=ID_NAME RGLB=library RGPL=illumina RGPU=identifier RGSM=sample_name
+</code></pre>
+<p>**Mark duplicate reads.**\</p>
+<pre><code>java -jar /usr/local/share/picard-tools/picard.jar MarkDuplicates I=rg_added_sorted.bam O=dedupped.bam CREATE_INDEX=true VALIDATION_STRINGENCY=SILENT M=output.metrics
+</code></pre>
+<p><strong>Identify and split Cigar N Reads and reassign quality scores.</strong></p>
+<pre><code>java -jar /usr/local/gatk3/GenomeAnalysisTK.jar -T SplitNCigarReads -R /path/to/genome/fasta -I dedupped.bam -o split.bam -rf ReassignOneMappingQuality -RMQF 255 -RMQT 60 -U ALLOW_N_CIGAR_READS -fixMisencodedQuals
+</code></pre>
+<p><strong>Perform BaseRecalibration</strong><br>Calibration files can be found here for hg38 <a target="_blank" rel="noopener" href="https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/v0">​Recalibration Files</a><br>NOTE: Calibration Files are only available for a few genomes (Human, Mouse, etc).</p>
+<pre><code>java -jar /usr/local/gatk3/GenomeAnalysisTK.jar -T BaseRecalibrator -R /path/to/genome/fasta -I dedupped.bam -knownSites /path/to/calibration/files -o recalibration.table`
+java -jar /usr/local/gatk3/GenomeAnalysisTK.jar -T PrintReads -R /path/to/genome/fasta -I dedupped.bam -BQSR recalibration.table -o recalibrated.bam`
+</code></pre>
+<h4 id="3-Call-and-Filter-Variants"><a href="#3-Call-and-Filter-Variants" class="headerlink" title="3 Call and Filter Variants."></a>3 Call and Filter Variants.</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -jar /usr/local/gatk3/GenomeAnalysisTK.jar -T HaplotypeCaller -R /path/to/genome/fasta -I recalibrated.bam -dontUseSoftClippedBases -stand_call_conf 20.0 -o Variants_called.vcf`</span><br><span class="line"></span><br><span class="line">java -jar /usr/local/gatk3/GenomeAnalysisTK.jar -T VariantFiltration -R /path/to/genome/fasta -V Variants_called.vcf -window 35 -cluster 3 -filterName Filter -filter &quot;QD &lt; 2.0&quot; -filterName Filter -filter &quot;FS &gt; 30.0&quot; -o Filtered_variants_called.vcf`</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>**Predict the effects of called variants.**\</p>
+<p>Several tools are available to analyze variants found in your .vcf result files for potential functional consequence. See details <a target="_blank" rel="noopener" href="http://barcwiki.wi.mit.edu/wiki/SOPs/vcf">​here</a>.</p>
+<p><a target="_blank" rel="noopener" href="http://barcwiki.wi.mit.edu/wiki/SOP/CallingVariantsRNAseq">This article was reposted from BaRC.</a></p>
 
       
     </div>
@@ -386,6 +409,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Transcriptomics/" rel="tag"># Transcriptomics</a>
+          
+        </div>
+      
 
       
       
@@ -395,8 +424,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/14/%E6%B2%B3%E8%A5%BF%E8%B5%B0%E5%BB%8A%E4%B9%8B%E9%80%9A%E9%81%93/" rel="next" title="河西走廊之通道">
-                <i class="fa fa-chevron-left"></i> 河西走廊之通道
+              <a href="/2020/02/20/%E5%9F%BA%E4%BA%8E%E5%8D%95%E5%80%8D%E5%9E%8B%E7%9A%84%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/" rel="next" title="基于单倍型的选择信号检测方法">
+                <i class="fa fa-chevron-left"></i> 基于单倍型的选择信号检测方法
               </a>
             
           </div>
@@ -405,8 +434,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/02/20/%E5%9F%BA%E4%BA%8E%E5%8D%95%E5%80%8D%E5%9E%8B%E7%9A%84%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/" rel="prev" title="基于单倍型的选择信号检测方法">
-                基于单倍型的选择信号检测方法 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/20/%E5%9F%BA%E4%BA%8E%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%85%A8%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%85%B3%E8%81%94%E5%88%86%E6%9E%90/" rel="prev" title="基于多变量的全基因组关联分析">
+                基于多变量的全基因组关联分析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -459,8 +488,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -544,6 +582,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-GATK-to-call-variants-from-RNA-seq-reads"><span class="nav-number">1.</span> <span class="nav-text">Using GATK to call variants from RNA-seq reads</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Run-the-STAR-2-pass-procedure-to-map-reads-to-the-reference-genome"><span class="nav-number">1.1.</span> <span class="nav-text">1  Run the STAR 2-pass procedure to map reads to the reference genome.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Replace-ReadGroups-mark-duplicate-reads-clip-intron-overhangs-and-reassign-mapping-qualities-with-%E2%80%8BPicard-Tools-and-%E2%80%8BGATK"><span class="nav-number">1.2.</span> <span class="nav-text">2 Replace ReadGroups, mark duplicate reads , clip intron overhangs and reassign mapping qualities with ​Picard Tools and ​GATK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Call-and-Filter-Variants"><span class="nav-number">1.3.</span> <span class="nav-text">3 Call and Filter Variants.</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
