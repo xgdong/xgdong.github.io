@@ -1053,8 +1053,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/RNA-seq/" itemprop="url" rel="index">
-                    <span itemprop="name">RNA-seq</span>
+                  <a href="/categories/Repost/" itemprop="url" rel="index">
+                    <span itemprop="name">Repost</span>
                   </a>
                 </span>
 
@@ -1091,18 +1091,10 @@
 
       
         
-          <h3 id="Notes-on-calling-variants-in-RNA-seq-data-with-GATK"><a href="#Notes-on-calling-variants-in-RNA-seq-data-with-GATK" class="headerlink" title="Notes on calling variants in RNA-seq data with GATK"></a>Notes on calling variants in RNA-seq data with GATK</h3><ul>
-<li><p>RNA-seq includes reads mapped across splice junctions and is associated with high variability of coverage, so typical variant calling pipelines (for DNA) can lead to lots of false positives and negatives.</p>
-</li>
-<li><p>GATK is currently the gold standard for calling variants in RNA-seq data. See a detailed description of their workflow here:</p>
+          <p><strong>Notes on calling variants in RNA-seq data with GATK</strong></p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://gatkforums.broadinstitute.org/gatk/discussion/3892/the-gatk-best-practices-for-variant-calling-on-rnaseq-in-full-detail">​GATK Best Practices for variant calling on RNAseq</a></li>
-<li><a target="_blank" rel="noopener" href="https://software.broadinstitute.org/gatk/documentation/article.php?id=3891">​Calling variants in RNAseq</a> (with sample commands)</li>
-</ul>
-</li>
-<li><p>A main difference between calling variants in RNA vs DNA sequencing reads with GATK, is for RNA-seq data the <a target="_blank" rel="noopener" href="https://github.com/alexdobin/STAR">​STAR</a> aligner is used to perform a 2-pass read mapping step, which was shown (<a target="_blank" rel="noopener" href="https://www.nature.com/nmeth/journal/v10/n12/full/nmeth.2722.html">​Engström, et al.</a>) to have superior SNP sensitivity in a comparison of the most common mapping tools.</p>
-</li>
-</ul>
+<li>RNA-seq includes reads mapped across splice junctions and is associated with high variability of coverage, so typical variant calling pipelines (for DNA) can lead to lots of false positives and negatives.</li>
+<li>GATK is currently the gold standard for calling variants in RNA-seq data. See a detailed description of their workflow here:
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/03/01/Calling-variants-in-RNA-seq-data-with-GATK/#more" rel="contents">
