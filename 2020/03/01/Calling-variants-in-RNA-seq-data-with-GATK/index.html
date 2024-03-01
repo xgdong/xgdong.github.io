@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Genomics," />
+  <meta name="keywords" content="Transcriptomics," />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="SOAPdenovo2 is a novel short-read assembly method that can build a de novo draft assembly for the human-sized genomes.">
+<meta name="description" content="Notes on calling variants in RNA-seq data with GATK RNA-seq includes reads mapped across splice junctions and is associated with high variability of coverage, so typical variant calling pipelines (for">
 <meta property="og:type" content="article">
-<meta property="og:title" content="A pipeline for Genome Assembly using SOAPdenovo2">
-<meta property="og:url" content="http://example.com/2019/05/20/A-pipeline-for-Genome-Assembly-using-SOAPdenovo2/index.html">
+<meta property="og:title" content="Calling variants in RNA-seq data with GATK">
+<meta property="og:url" content="http://example.com/2020/03/01/Calling-variants-in-RNA-seq-data-with-GATK/index.html">
 <meta property="og:site_name" content="Xianggui Dong">
-<meta property="og:description" content="SOAPdenovo2 is a novel short-read assembly method that can build a de novo draft assembly for the human-sized genomes.">
+<meta property="og:description" content="Notes on calling variants in RNA-seq data with GATK RNA-seq includes reads mapped across splice junctions and is associated with high variability of coverage, so typical variant calling pipelines (for">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-05-20T05:17:57.000Z">
-<meta property="article:modified_time" content="2023-06-20T05:28:43.272Z">
+<meta property="article:published_time" content="2020-03-01T08:59:24.000Z">
+<meta property="article:modified_time" content="2024-03-01T09:23:11.348Z">
 <meta property="article:author" content="DONG XG">
-<meta property="article:tag" content="Genomics">
+<meta property="article:tag" content="Transcriptomics">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2019/05/20/A-pipeline-for-Genome-Assembly-using-SOAPdenovo2/"/>
+  <link rel="canonical" href="http://example.com/2020/03/01/Calling-variants-in-RNA-seq-data-with-GATK/"/>
 
 
 
 
 
-  <title>A pipeline for Genome Assembly using SOAPdenovo2 | Xianggui Dong</title>
+  <title>Calling variants in RNA-seq data with GATK | Xianggui Dong</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/05/20/A-pipeline-for-Genome-Assembly-using-SOAPdenovo2/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/01/Calling-variants-in-RNA-seq-data-with-GATK/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">A pipeline for Genome Assembly using SOAPdenovo2</h1>
+          <h1 class="post-title" itemprop="name headline">Calling variants in RNA-seq data with GATK</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-20T13:17:57+08:00">
-                2019-05-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-01T16:59:24+08:00">
+                2020-03-01
               </time>
             
 
@@ -325,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Assembly/" itemprop="url" rel="index">
-                    <span itemprop="name">Assembly</span>
+                  <a href="/categories/RNA-seq/" itemprop="url" rel="index">
+                    <span itemprop="name">RNA-seq</span>
                   </a>
                 </span>
 
@@ -362,28 +362,44 @@
       
 
       
-        <p><a target="_blank" rel="noopener" href="https://github.com/aquaskyline/SOAPdenovo2">SOAPdenovo2</a> is a novel short-read assembly method that can build a de novo draft assembly for the human-sized genomes.</p>
+        <h3 id="Notes-on-calling-variants-in-RNA-seq-data-with-GATK"><a href="#Notes-on-calling-variants-in-RNA-seq-data-with-GATK" class="headerlink" title="Notes on calling variants in RNA-seq data with GATK"></a>Notes on calling variants in RNA-seq data with GATK</h3><ul>
+<li><p>RNA-seq includes reads mapped across splice junctions and is associated with high variability of coverage, so typical variant calling pipelines (for DNA) can lead to lots of false positives and negatives.</p>
+</li>
+<li><p>GATK is currently the gold standard for calling variants in RNA-seq data. See a detailed description of their workflow here:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://gatkforums.broadinstitute.org/gatk/discussion/3892/the-gatk-best-practices-for-variant-calling-on-rnaseq-in-full-detail">​GATK Best Practices for variant calling on RNAseq</a></li>
+<li><a target="_blank" rel="noopener" href="https://software.broadinstitute.org/gatk/documentation/article.php?id=3891">​Calling variants in RNAseq</a> (with sample commands)</li>
+</ul>
+</li>
+<li><p>A main difference between calling variants in RNA vs DNA sequencing reads with GATK, is for RNA-seq data the <a target="_blank" rel="noopener" href="https://github.com/alexdobin/STAR">​STAR</a> aligner is used to perform a 2-pass read mapping step, which was shown (<a target="_blank" rel="noopener" href="https://www.nature.com/nmeth/journal/v10/n12/full/nmeth.2722.html">​Engström, et al.</a>) to have superior SNP sensitivity in a comparison of the most common mapping tools.</p>
+</li>
+</ul>
 <span id="more"></span>
 
+<h2 id="Using-GATK-to-call-variants-from-RNA-seq-reads"><a href="#Using-GATK-to-call-variants-from-RNA-seq-reads" class="headerlink" title="Using GATK to call variants from RNA-seq reads"></a>Using GATK to call variants from RNA-seq reads</h2><p>This example pipeline starts with a single-end short-read fastq file (Reads_1.fq).<br>Note that GATK (versions 3.7 and 3.8) requires Java 1.8 (so you may need to adjust your path to point to that version, if an older version is the default).<br>For example, this can be added to ~&#x2F;.bashrc:<br>export PATH&#x3D;&#x2F;path&#x2F;to&#x2F;java:$PATH</p>
+<p><strong>1 - Run the STAR 2-pass procedure to map reads to the reference genome</strong>.</p>
+<p>For the STAR 2-pass mapping procedure, please see our mapping SOP, under <a target="_blank" rel="noopener" href="http://barcwiki.wi.mit.edu/wiki/SOPs/mapping">​STAR</a>.</p>
+<p><strong>2 - Replace ReadGroups, mark duplicate reads , clip intron overhangs and reassign mapping qualities with<a target="_blank" rel="noopener" href="http://broadinstitute.github.io/picard/">​Picard Tools</a> and <a target="_blank" rel="noopener" href="https://software.broadinstitute.org/gatk/download/">​GATK</a></strong></p>
+<p><strong>Replace read groups and order, by coordinates, the reads</strong>.</p>
+<p>Note, if you are combining multiple experiments in this step the RGSM IDs must be the same while the library IDs must be unique.</p>
+<pre><code>java -jar /usr/local/share/picard-tools/picard.jar AddOrReplaceReadGroups I=output.sam O=rg_added_sorted.bam SO=coordinate RGID=ID_NAME RGLB=library RGPL=illumina RGPU=identifier RGSM=sample_name
+</code></pre>
+<p><strong>Mark duplicate reads.</strong></p>
+<pre><code>java -jar /usr/local/share/picard-tools/picard.jar MarkDuplicates I=rg_added_sorted.bam O=dedupped.bam CREATE_INDEX=true VALIDATION_STRINGENCY=SILENT M=output.metrics
+</code></pre>
+<p><strong>Identify and split Cigar N Reads and reassign quality scores.</strong></p>
+<pre><code>java -jar /usr/local/gatk3/GenomeAnalysisTK.jar -T SplitNCigarReads -R /path/to/genome/fasta -I dedupped.bam -o split.bam -rf ReassignOneMappingQuality -RMQF 255 -RMQT 60 -U ALLOW_N_CIGAR_READS -fixMisencodedQuals
+</code></pre>
+<p>**Perform BaseRecalibration.**<br>Calibration files can be found here for hg38 <a target="_blank" rel="noopener" href="https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/v0">​Recalibration Files</a><br>NOTE: Calibration Files are only available for a few genomes (Human, Mouse, etc).</p>
+<pre><code>java -jar /usr/local/gatk3/GenomeAnalysisTK.jar -T BaseRecalibrator -R /path/to/genome/fasta -I dedupped.bam -knownSites /path/to/calibration/files -o recalibration.table`
+java -jar /usr/local/gatk3/GenomeAnalysisTK.jar -T PrintReads -R /path/to/genome/fasta -I dedupped.bam -BQSR recalibration.table -o recalibrated.bam`
+</code></pre>
+<p><strong>3 - Call and Filter Variants.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -jar /usr/local/gatk3/GenomeAnalysisTK.jar -T HaplotypeCaller -R /path/to/genome/fasta -I recalibrated.bam -dontUseSoftClippedBases -stand_call_conf 20.0 -o Variants_called.vcf`</span><br><span class="line"></span><br><span class="line">java -jar /usr/local/gatk3/GenomeAnalysisTK.jar -T VariantFiltration -R /path/to/genome/fasta -V Variants_called.vcf -window 35 -cluster 3 -filterName Filter -filter &quot;QD &lt; 2.0&quot; -filterName Filter -filter &quot;FS &gt; 30.0&quot; -o Filtered_variants_called.vcf`</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><strong>Step1: Check the Insertion Size</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">java -jar picard.jar CollectInsertSizeMetrics \</span><br><span class="line">      I=.sorted.markdup.bam \</span><br><span class="line">      O=.insert_size_metrics.txt \</span><br><span class="line">      H=.nsert_size_histogram.pdf \</span><br><span class="line">      M=0.5</span><br><span class="line">      </span><br></pre></td></tr></table></figure>
-
-
-<p><strong>Step2: Make configure file</strong> </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">max_rd_len=150  </span><br><span class="line">[LIB]</span><br><span class="line">avg_ins=320</span><br><span class="line">reverse_seq=0</span><br><span class="line">asm_flags=3</span><br><span class="line">rank=1</span><br><span class="line">pair_num_cutoff=3</span><br><span class="line">map_len=32</span><br><span class="line">q1=._1_clean.fq.gz</span><br><span class="line">q2=._2_clean.fq.gz</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>Step3: Run SOAPdenovo2</strong> </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">time SOAPdenovo-63mer all -s file_configure -K 63 -o output </span><br></pre></td></tr></table></figure>
-
-<p><em><strong>Set kmers&#x3D;29,55,63</strong></em></p>
-<p><strong>Step4:Evaluate the assembly using QUAST</strong></p>
-<ul>
-<li>QUAST</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># for contig</span><br><span class="line">## without reference</span><br><span class="line"></span><br><span class="line">quast.py -o compare 29mer/file_29mer.contig 55mer/file_55mer.contig 63mer/file_63mer.contig</span><br><span class="line"></span><br><span class="line">## with reference</span><br><span class="line"></span><br><span class="line">quast.py -R reference.fa -o compare 29mer/file_29mer.contig 55mer/file__55mer.contig 63mer/file_63mer.contig</span><br><span class="line">quast.py -R reference.fa -g top_level.gff3 -o compare_r_g 29mer/file_29mer.contig 55mer/file_55mer.contig 63mer/file_63mer.contig</span><br><span class="line"></span><br><span class="line"># for scaf</span><br><span class="line"></span><br><span class="line">quast.py -o compare 29mer/file_29mer.scafSeq 55mer/file_55mer.scafSeq 63mer/file_63mer.scafSeq</span><br><span class="line">quast.py -s -o compare_scafSeq 29mer/file_29mer.scafSeq 55mer/file_55mer.scafSeq 63mer/file_63mer.scafSeq</span><br><span class="line">quast.py -R reference.fa -o compare_scaf_ref 29mer/file_29mer.scafSeq 55mer/file_55mer.scafSeq 63mer/file_63mer.scafSeq</span><br></pre></td></tr></table></figure>
-
-
+<p><strong>4 - Predict the effects of called variants.</strong></p>
+<p>Several tools are available to analyze variants found in your .vcf result files for potential functional consequence. See details <a target="_blank" rel="noopener" href="http://barcwiki.wi.mit.edu/wiki/SOPs/vcf">​here</a>.</p>
+<p><a target="_blank" rel="noopener" href="http://barcwiki.wi.mit.edu/wiki/SOP/CallingVariantsRNAseq">Reprinted from BaRC</a></p>
 
       
     </div>
@@ -401,7 +417,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Genomics/" rel="tag"># Genomics</a>
+            <a href="/tags/Transcriptomics/" rel="tag"># Transcriptomics</a>
           
         </div>
       
@@ -414,8 +430,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/20/%E5%90%BE%E5%AE%B6%E6%9C%89%E5%A5%B3/" rel="next" title="吾家有女">
-                <i class="fa fa-chevron-left"></i> 吾家有女
+              <a href="/2020/02/20/%E5%9F%BA%E4%BA%8E%E5%8D%95%E5%80%8D%E5%9E%8B%E7%9A%84%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/" rel="next" title="基于单倍型的选择信号检测方法">
+                <i class="fa fa-chevron-left"></i> 基于单倍型的选择信号检测方法
               </a>
             
           </div>
@@ -424,8 +440,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/18/Principal-component-analysis/" rel="prev" title="Principal component analysis">
-                Principal component analysis <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/20/%E5%9F%BA%E4%BA%8E%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%85%A8%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%85%B3%E8%81%94%E5%88%86%E6%9E%90/" rel="prev" title="基于多变量的全基因组关联分析">
+                基于多变量的全基因组关联分析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -478,8 +494,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -563,6 +588,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Notes-on-calling-variants-in-RNA-seq-data-with-GATK"><span class="nav-number">1.</span> <span class="nav-text">Notes on calling variants in RNA-seq data with GATK</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-GATK-to-call-variants-from-RNA-seq-reads"><span class="nav-number"></span> <span class="nav-text">Using GATK to call variants from RNA-seq reads</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
